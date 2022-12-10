@@ -20,6 +20,7 @@ module.exports = function validateProfileInput(data) {
     errors.status = 'Status field cannot be empty!'
   }
 
+
   if (Validator.isEmpty(data.skills)) {
     errors.skills = 'Skills field cannot be empty!'
   }

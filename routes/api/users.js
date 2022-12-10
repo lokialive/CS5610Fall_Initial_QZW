@@ -45,6 +45,8 @@ router.post('/register', (req, res) => {
         email: req.body.email,
         avatar,
         password: req.body.password,
+        // add role type for a new user 11:20-1:31
+        type: req.body.type
       })
 
       bcrypt.genSalt(10, function (err, salt) {
@@ -76,8 +78,11 @@ router.post('/login', (req, res) => {
 
   const email = req.body.email
   const password = req.body.password
-  //Search database by email
-  User.findOne({ email }).then((user) => {
+  // add type role for login - post
+  const type = req.body.type
+
+  //Search database by email and type 11:20 -12:34
+  User.findOne({ email }, ).then((user) => {
     if (!user) {
       return res.status(404).json({ email: 'Account not exists!' })
     }
@@ -114,6 +119,8 @@ router.get(
       id: req.user.id,
       name: req.user.name,
       email: req.user.email,
+      // get current user type - 11:20:1:34
+      type: req.user.type
     })
   },
 )
