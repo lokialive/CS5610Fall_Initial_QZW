@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
-import Loading from './components/layout/Loading'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Dashboard from './components/dashboard/Dashboard'
@@ -24,17 +24,17 @@ import CreateProfile from './components/create-profile/CreateProfile'
 import Post from './components/post/Post'
 
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken)
+  setAuthToken(localStorage.jwtToken);
 
   // decode token
-  const decoded = jwt_decode(localStorage.jwtToken)
-  store.dispatch(setCurrentUser(decoded))
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
 
   // chekc if the token is expired; If expired, jump to the login page.
-  const currentTime = Date.now() / 1000
+  const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
-    store.dispatch(logoutUser())
-    window.location.href = '/login'
+    store.dispatch(logoutUser());
+    window.location.href = '/login';
   }
 }
 
@@ -46,7 +46,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <div className="contaier">
+            <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />

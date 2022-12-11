@@ -2,7 +2,7 @@
 import { applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
-import { legacy_createStore as createStore } from 'redux'
+import { createStore } from 'redux'
 
 const middleware = [thunk]
 const initialState = {}
