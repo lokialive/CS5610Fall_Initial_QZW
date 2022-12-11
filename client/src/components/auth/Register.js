@@ -12,6 +12,8 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
+      // 添加用户类型 role： employee, employer, admin - 11.22-12:05
+      type : '',
       password: '',
       password2: '',
       errors: {},
@@ -32,6 +34,8 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
+     // 添加用户类型 type：
+      type: this.state.type,
     }
 
     this.props.registerUser(newUser, this.props.history)
@@ -82,6 +86,7 @@ class Register extends Component {
                   info="We are using the gravatar global avatar. If you want to show your avatar, please rehister on the gavatar."
                 />
 
+
                 <TextFieldGroup
                   type="password"
                   placeholder="Password"
@@ -99,6 +104,29 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
+
+                {/* role checkbox  for register 11.20- 12:16 */}
+
+                <div >
+                  <span>My role:</span>
+                  &nbsp;&nbsp;&nbsp;
+
+                  <input type={"radio"} value={"Employee"} checked={this.state.type === "Employee"}  onChange={this.onChange}
+                         name="type" /> Employee
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                  <input type={"radio"} value={"Employer"} checked={this.state.type === "Employer"}
+                         onChange={this.onChange} name="type" /> Employer
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                  <input type={"radio"} value={"Admin"} checked={this.state.type === "Admin"}
+                         onChange={this.onChange} name="type" /> Admin
+
+                </div>
+
+
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>

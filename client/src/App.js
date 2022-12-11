@@ -22,6 +22,8 @@ import { Provider } from 'react-redux'
 import store from './store'
 import CreateProfile from './components/create-profile/CreateProfile'
 import Post from './components/post/Post'
+import CompanyComponent from "./components/detail/Company";
+
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -50,6 +52,11 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
+
+              {/*12.6- new component*/}
+              <Route exact path="/companies" component={CompanyComponent} />
+
+
               <Route
                 exact
                 path="/profile/loading"
