@@ -1,9 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PositionItem from "../Position/PositionItem";
+import PositionList from "../Position/PositionList";
 import "./company.css"
 import background from "../../img/linkedin.png"
-import user from "../../img/user.jpeg"
+import users from "../../img/user.jpeg"
+
 
 const CompanyComponent = (
     {
@@ -33,18 +35,14 @@ const CompanyComponent = (
 
                     </i>
                 </div>
-                <div className="col-1">
-                    <i className="wd-bottom-4 text-primary float-end bi-gear-fill fs-2 position-relative">
 
-                    </i>
-                </div>
             </div>
 
 
             <li className="list-group-item">
                 <div >
                     <img width={'100%'} className="position-relative pe-0 pt-2 pb-2 " alt={"post-img"} src={background} />
-                    <img width={140} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={"user.jpeg"} />
+                    <img style={{width:150,height:140}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={users} />
                 </div>
 
 
@@ -93,7 +91,7 @@ const CompanyComponent = (
 
             </li>
 
-            <PositionItem/>
+            <PositionList/>
        </div>
 
     );
