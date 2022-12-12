@@ -23,7 +23,7 @@ import store from './store'
 import CreateProfile from './components/create-profile/CreateProfile'
 import Post from './components/post/Post'
 import CompanyComponent from "./components/detail/Company";
-
+import HomeComponent from "./components/homePage/HomeComponent";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken)
@@ -55,6 +55,7 @@ class App extends Component {
 
               {/*12.6- new component*/}
               <Route exact path="/companies" component={CompanyComponent} />
+              <Route exact path="/company/HomePage/:handle" component={HomeComponent} />
 
 
               <Route
