@@ -9,7 +9,6 @@ module.exports = function validateLoginInput(data) {
   // add type role 11:20-13:45
   data.type = !isEmpty(data.type) ? data.type : ''
 
-
   if (!Validator.isEmail(data.email)) {
     errors.email = 'Invalid Email!'
   }
@@ -21,7 +20,6 @@ module.exports = function validateLoginInput(data) {
   if (Validator.isEmpty(data.password)) {
     errors.password = 'Password cannot be empty!'
   }
-
 
   // validate for type 11:20-13:47
   if (Validator.isEmpty(data.type)) {

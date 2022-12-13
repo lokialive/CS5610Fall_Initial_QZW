@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
         avatar,
         password: req.body.password,
         // add role type for a new user 11:20-1:31
-        type: req.body.type
+        type: req.body.type,
       })
 
       bcrypt.genSalt(10, function (err, salt) {
@@ -72,9 +72,9 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body)
 
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
+  // if (!isValid) {
+  //   return res.status(401).json(errors)
+  // }
 
   const email = req.body.email
   const password = req.body.password
@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
   const type = req.body.type
 
   //Search database by email and type 11:20 -12:34
-  User.findOne({ email }, ).then((user) => {
+  User.findOne({ email }).then((user) => {
     if (!user) {
       return res.status(404).json({ email: 'Account not exists!' })
     }
@@ -90,7 +90,7 @@ router.post('/login', (req, res) => {
     // match the password
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        const rule = { id: user.id, name: user.name }
+        const rule = { id: user.id, name: user.name, type: user.type }
         jwt.sign(rule, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           if (err) throw err
           res.json({
@@ -101,7 +101,7 @@ router.post('/login', (req, res) => {
         // res.json({msg:"success"});
       } else {
         return res
-          .status(400)
+          .status(405)
           .json({ password: "The password doesn't match the account email!" })
       }
     })
@@ -120,7 +120,7 @@ router.get(
       name: req.user.name,
       email: req.user.email,
       // get current user type - 11:20:1:34
-      type: req.user.type
+      type: req.user.type,
     })
   },
 )

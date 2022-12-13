@@ -1,32 +1,31 @@
-import React, {useEffect} from "react";
+// import React, {useEffect} from "react";
 
-import SavedItem from "./SavedItem";
+// import SavedItem from "./SavedItem";
 
-import savedItems from "./SavedInfo.json"
+// import savedItems from "./SavedInfo.json"
 
-import {useDispatch, useSelector} from "react-redux";
-import {findSavedItems} from "./savedItem-service";
-import {findSavedItemsThunk} from "./savedItem-thunks";
+// import {useDispatch, useSelector} from "react-redux";
+// import {findSavedItems} from "./savedItem-service";
+// import {findSavedItemsThunk} from "./savedItem-thunks";
 
+// const SavedList = () => {
 
-const SavedList = () => {
+//     //const {positions, loading} = useSelector(state => state.positionData)
 
-    //const {positions, loading} = useSelector(state => state.positionData)
+//     const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+//     useEffect(() => {
+//         dispatch(findSavedItemsThunk)}, [])
 
-    useEffect(() => {
-        dispatch(findSavedItemsThunk)}, [])
+//     return(
 
-    return(
+//         <ul className="list-group">
 
-        <ul className="list-group">
+//             {
 
-            {
-
-                savedItems.map(saveItem => <SavedItem key={saveItem._id} saved={saveItem}/> )
-            }
-        </ul>
-    );
-};
-export default SavedList;
+//                 savedItems.map(saveItem => <SavedItem key={saveItem._id} saved={saveItem}/> )
+//             }
+//         </ul>
+//     );
+// };
+// export default SavedList;

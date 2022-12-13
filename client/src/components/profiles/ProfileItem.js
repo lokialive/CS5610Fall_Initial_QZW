@@ -16,7 +16,9 @@ class ProfileItem extends Component {
             <h3>{profile.user.name}</h3>
             <p>{profile.status}</p>
             <p>
-              {isEmpty(profile.location) ? null : (
+              {isEmpty(profile.location) ? (
+                'No location.'
+              ) : (
                 <span>{profile.location}</span>
               )}
             </p>
