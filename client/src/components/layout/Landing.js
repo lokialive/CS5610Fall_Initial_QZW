@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
+import AnonyHome from '../Anonymous/AnonyHome'
 class Landing extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -10,6 +11,7 @@ class Landing extends Component {
   }
 
   render() {
+    let anonyhome = <AnonyHome />
     return (
       <div className="landing">
         <div className="dark-overlay landing-inner text-light">
@@ -17,16 +19,17 @@ class Landing extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4">DevelopersMatch</h1>
-                <p className="lead"> Help developers match jobs! </p>
+                {/* <p className="lead"> Help developers match jobs! </p> */}
                 <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
+                {/* <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Register
                 </Link>
                 <Link to="/login" className="btn btn-lg btn-light">
                   Login
-                </Link>
+                </Link> */}
               </div>
             </div>
+            {anonyhome}
           </div>
         </div>
       </div>

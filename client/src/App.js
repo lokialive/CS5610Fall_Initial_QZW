@@ -25,6 +25,12 @@ import Post from './components/post/Post'
 import CompanyComponent from "./components/detail/Company";
 import SearchComponent from "./components/search";
 
+import HomeComponent from './components/homePage/HomeComponent'
+import CreateCompanyProfile from './components/create-profile/CreateCompanyProfile'
+import EditCompanyProfile from './components/edit-profile/EditCompanyProfile'
+import AddWork from './components/create-profile/AddWork'
+import AnonyProfile from './components/Anonymous/AnonyProfile'
+import AnonyHome from './components/Anonymous/AnonyHome'
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -53,11 +59,16 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/anony/home" component={AnonyHome} />
 
               {/*12.6- new component*/}
               <Route path="/companies/*" component={CompanyComponent} />
               <Route exact path="/search" component={SearchComponent}/>
-
+              <Route
+                exact
+                path="/company/HomePage/:handle"
+                component={HomeComponent}
+              />
 
               <Route
                 exact
@@ -65,6 +76,11 @@ class App extends Component {
                 redirect="/profile/:handle"
               />
               <Route exact path="/profile/:handle" component={Profile} />
+              <Route
+                exact
+                path="/profile/anony/:handle"
+                component={AnonyProfile}
+              />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -78,8 +94,22 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
+                  path="/create-company-profile"
+                  component={CreateCompanyProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
                   path="/edit-profile"
                   component={EditProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-company-profile"
+                  component={EditCompanyProfile}
                 />
               </Switch>
               <Switch>
@@ -95,6 +125,9 @@ class App extends Component {
                   path="/add-education"
                   component={AddEducation}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/add-work" component={AddWork} />
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />

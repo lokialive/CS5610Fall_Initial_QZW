@@ -8,3 +8,4 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+

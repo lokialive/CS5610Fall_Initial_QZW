@@ -47,7 +47,6 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
       // add new type element
-      type: this.state.type
     }
     // console.log(newUser);
     this.props.loginUser(newUser)
@@ -82,26 +81,35 @@ class Login extends Component {
                   error={errors.password}
                 />
 
-
                 {/* role checkbox for login   11.20- 13:16 */}
 
-                <div >
+                <div>
                   <span>My role:</span>
                   &nbsp;&nbsp;&nbsp;
-
-                  <input type={"radio"} value={"Employee"} checked={this.state.type === "Employee"}  onChange={this.onChange}
-                         name="type"/> Employee
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-                  <input type={"radio"} value={"Employer"} checked={this.state.type === "Employer"}
-                         onChange={this.onChange} name="type" /> Employer
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-                  <input type={"radio"} value={"Admin"} checked={this.state.type === "Admin"}
-                         onChange={this.onChange} name="type" /> Admin
-
+                  <input
+                    type={'radio'}
+                    value={'Employee'}
+                    checked={this.state.type === 'Employee'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Employee &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input
+                    type={'radio'}
+                    value={'Employer'}
+                    checked={this.state.type === 'Employer'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Employer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input
+                    type={'radio'}
+                    value={'Admin'}
+                    checked={this.state.type === 'Admin'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Admin
                 </div>
 
                 <input type="submit" className="btn btn-info btn-block mt-4" />

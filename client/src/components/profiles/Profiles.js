@@ -18,9 +18,9 @@ class Profiles extends Component {
       profileItems = <Spinner />
     } else {
       if (profiles.length > 0) {
-        profileItems = profiles.map((profile) => (
-          <ProfileItem key={profile._id} profile={profile} />
-        ))
+        profileItems = profiles
+          .filter((profile) => profile.status)
+          .map((profile) => <ProfileItem key={profile._id} profile={profile} />)
       } else {
         profileItems = <h4>Currently, there is not developer info...</h4>
       }

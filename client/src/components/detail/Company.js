@@ -16,7 +16,6 @@ const CompanyComponent = () => {
         dispatch(fetchCompanyThunk(paths[2]))
     }, [])
 
-
     return(
 
         <div className="ps-5 pe-5">
@@ -31,8 +30,6 @@ const CompanyComponent = () => {
                     <img width={'100%'} className="position-relative pe-0 pt-2 pb-2 " alt={"post-img"} src={background} />
                     <img style={{width:80,height:80}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={company.favicon} />
                 </div>
-
-
 
                 <div className="fw-bolder fs-4  pb-2">
                     {company.name}

@@ -48,32 +48,39 @@ router.post(
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body)
 
-    if (!isValid) {
-      return res.status(400).json(errors)
-    }
-
     const profileFields = {}
     profileFields.user = req.user.id
-    if (req.body.handle) profileFields.handle = req.body.handle
-    if (req.body.company) profileFields.company = req.body.company
-    if (req.body.website) profileFields.website = req.body.website
-    if (req.body.location) profileFields.location = req.body.location
-    if (req.body.status) profileFields.status = req.body.status
+    if (req.body.type == 'Employee') {
+      if (req.body.handle) profileFields.handle = req.body.handle
+      if (req.body.company) profileFields.company = req.body.company
+      if (req.body.website) profileFields.website = req.body.website
+      if (req.body.location) profileFields.location = req.body.location
+      if (req.body.status) profileFields.status = req.body.status
+      if (req.body.bio) profileFields.bio = req.body.bio
+      if (req.body.githubusername)
+        profileFields.githubusername = req.body.githubusername
 
-    if (req.body.bio) profileFields.bio = req.body.bio
-    if (req.body.githubusername)
-      profileFields.githubusername = req.body.githubusername
+      if (typeof req.body.skills !== 'undefined') {
+        profileFields.skills = req.body.skills.split(',')
+      }
 
-    if (typeof req.body.skills !== 'undefined') {
-      profileFields.skills = req.body.skills.split(',')
+      profileFields.social = {}
+
+      if (req.body.wechat) profileFields.social.wechat = req.body.wechat
+      if (req.body.QQ) profileFields.social.QQ = req.body.QQ
+      if (req.body.tengxunkt)
+        profileFields.social.tengxunkt = req.body.tengxunkt
+      if (req.body.wangyikt) profileFields.social.wangyikt = req.body.wangyikt
+    } else {
+      if (req.body.phone) profileFields.phone = req.body.phone
+      if (req.body.companyName) profileFields.companyName = req.body.companyName
+      if (req.body.industry) profileFields.industry = req.body.industry
+      if (req.body.yearFounded) profileFields.yearFounded = req.body.yearFounded
+      if (req.body.handle) profileFields.handle = req.body.handle
+      if (req.body.website) profileFields.website = req.body.website
+      if (req.body.location) profileFields.location = req.body.location
+      if (req.body.bio) profileFields.bio = req.body.bio
     }
-
-    profileFields.social = {}
-
-    if (req.body.wechat) profileFields.social.wechat = req.body.wechat
-    if (req.body.QQ) profileFields.social.QQ = req.body.QQ
-    if (req.body.tengxunkt) profileFields.social.tengxunkt = req.body.tengxunkt
-    if (req.body.wangyikt) profileFields.social.wangyikt = req.body.wangyikt
 
     Profile.findOne({ user: req.user.id }).then((profile) => {
       if (profile) {
@@ -89,7 +96,7 @@ router.post(
           if (profile) {
             errors.handle =
               'The handle has already exists, please enter another handle!'
-            res.status(400).json(errors)
+            res.status(406).json(errors)
           }
 
           new Profile(profileFields).save().then((profile) => res.json(profile))
@@ -215,6 +222,44 @@ router.post(
   },
 )
 
+// $route  POST api/profile/work
+// @desc   Add Education
+// @access Private
+router.post(
+  '/work',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then((profile) => {
+      const newWork = {
+        title: req.body.title,
+        description: req.body.description,
+      }
+
+      profile.work.unshift(newWork)
+
+      profile.save().then((profile) => res.json(profile))
+    })
+  },
+)
+
+router.delete(
+  '/work/:work_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then((profile) => {
+        const removeIndex = profile.work
+          .map((item) => item.id)
+          .indexOf(req.params.work_id)
+
+        profile.work.splice(removeIndex, 1)
+
+        profile.save().then((profile) => res.json(profile))
+      })
+      .catch((err) => res.status(404).json(err))
+  },
+)
+
 // $route  DELETE api/profile/experience/:epx_id
 // @desc   Delete experience by experience id
 // @access Private
@@ -247,7 +292,7 @@ router.delete(
       .then((profile) => {
         const removeIndex = profile.experience
           .map((item) => item.id)
-          .indexOf(req.params.epx_id)
+          .indexOf(req.params.edu_id)
 
         profile.education.splice(removeIndex, 1)
 
@@ -257,18 +302,25 @@ router.delete(
   },
 )
 
-// $route  DELETE api/profile
+// $route  DELETE api/profile/
 // @desc   Delete current user account
 // @access Private
 router.delete(
-  '/education/:edu_id',
-  passport.authenticate('jwt', { session: false }),
+  '/',
+  // passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-      User.findOneAndRemove({ _id: req.user.id }).then(() => {
-        res.json({ success: true })
+    Profile.findById(req.body._id)
+      .then((post) => post.remove())
+      .then(() => {
+        User.findById(req.body.user._id)
+          .then((user) => user.remove())
+          .then(() => {
+            res.json({ success: true })
+          })
       })
-    })
+      .catch((err) =>
+        res.status(402).json({ postnotfound: 'Cannot find the user.' }),
+      )
   },
 )
 
