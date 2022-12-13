@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6e920e4-8cbb-4c06-90d9-08ad77faa45d" name="Changes" comment="" />
+    <list default="true" id="f6e920e4-8cbb-4c06-90d9-08ad77faa45d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models/Position.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +54,8 @@
       <workItem from="1670377338881" duration="687000" />
       <workItem from="1670612781176" duration="20329000" />
       <workItem from="1670905076689" duration="879000" />
-      <workItem from="1670961709182" duration="1267000" />
+      <workItem from="1670961709182" duration="1649000" />
+      <workItem from="1670969443460" duration="1445000" />
     </task>
     <servers />
   </component>
