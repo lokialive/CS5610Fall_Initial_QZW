@@ -1,7 +1,7 @@
 import React from 'react'
 import {Component} from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Navbar from './components/layout/Navbar'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
 import Login from './components/auth/Login'
@@ -23,6 +23,7 @@ import store from './store'
 import CreateProfile from './components/create-profile/CreateProfile'
 import Post from './components/post/Post'
 import CompanyComponent from "./components/detail/Company";
+import SearchComponent from "./components/search";
 
 
 if (localStorage.jwtToken) {
@@ -54,7 +55,8 @@ class App extends Component {
               <Route exact path="/profiles" component={Profiles} />
 
               {/*12.6- new component*/}
-              <Route exact path="/companies" component={CompanyComponent} />
+              <Route path="/companies/:cid" component={CompanyComponent} />
+              <Route exact path="/search" component={SearchComponent}/>
 
 
               <Route

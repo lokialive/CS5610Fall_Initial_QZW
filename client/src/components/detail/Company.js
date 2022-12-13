@@ -1,50 +1,35 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import PositionItem from "../Position/PositionItem";
+import React, {useEffect} from "react";
+import {useLocation} from "react-router-dom";
+import PositionList from "../Position/PositionList";
 import "./company.css"
 import background from "../../img/linkedin.png"
-import user from "../../img/user.jpeg"
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCompanyThunk} from "../search/search-thunks.js";
+import {Link} from "react-router-dom";
 
-const CompanyComponent = (
-    {
-        company = {
-            "name":"Northeastern University",
-            "city":"Boston",
-            "State":"MA",
-            "Website" : "www.northeastern.edu",
-            "Description":"An university like no other",
-            "industry":"Higher Education",
-            "employees_range":10000,
-            "icon":"image",
-            "year_founed":1898,
-            "phone":"8572044479"
+const CompanyComponent = () => {
+    const {company, loading} = useSelector(
+        state => state.company)
+    const {pathname} = useLocation();
+    const paths = pathname.split('/');
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(fetchCompanyThunk(paths[2]))
+    }, [])
 
-        }
-    }
-) => {
     return(
+
         <div className="ps-5 pe-5">
-            <div className="row">
-                <div className="col-12 position-relative">
-                    <input placeholder="Search Tuiter"
-                           className="form-control rounded-pill ps-5"/>
-                    <i className="bi bi-search position-absolute
-                       wd-nudge-up">
-
-                    </i>
-                </div>
-                <div className="col-1">
-                    <i className="wd-bottom-4 text-primary float-end bi-gear-fill fs-2 position-relative">
-
-                    </i>
-                </div>
-            </div>
-
-
+            {
+                loading &&
+                <li className="list-group-item">
+                    loading...
+                </li>
+            }
             <li className="list-group-item">
                 <div >
                     <img width={'100%'} className="position-relative pe-0 pt-2 pb-2 " alt={"post-img"} src={background} />
-                    <img width={140} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={"user.jpeg"} />
+                    <img style={{width:150,height:140}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={company.favicon} />
                 </div>
 
 
@@ -62,7 +47,7 @@ const CompanyComponent = (
 
 
                 <div className="text-secondary  pe-1 pt-2 pb-2  wd-text-post-small">
-                    {company.Description}
+                    {company.description}
                 </div>
 
 
@@ -74,12 +59,12 @@ const CompanyComponent = (
 
                 <div>
 
-                    <label className="pe-5 pt-3 text-secondary" >Location: {company.city}, {company.State}</label>
-                    <label className=" ps-1 pe-5 pt-3 text-secondary">Founded: {company.year_founed}</label>
+                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address.city}, {company.address.state}</label>*/}
+                    <label className=" ps-1 pe-5 pt-3 text-secondary">Founded: {company.year_founded}</label>
                 </div>
 
                 <div>
-                    <label className="pe-5 pt-3 text-secondary" >Website:{company.Website}</label>
+                    <label className="pe-5 pt-3 text-secondary" >Website:{company.website}</label>
                 </div>
 
                 <div >
@@ -93,7 +78,7 @@ const CompanyComponent = (
 
             </li>
 
-            <PositionItem/>
+            <PositionList/>
        </div>
 
     );
