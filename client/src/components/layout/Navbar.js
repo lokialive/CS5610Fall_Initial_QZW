@@ -60,6 +60,20 @@ class Navbar extends Component {
         </li>
       </ul>
     )
+    let developersLink
+    if (isAuthenticated) {
+      developersLink = (
+        <Link className="nav-link" to="/profiles">
+          Developers
+        </Link>
+      )
+    } else {
+      developersLink = (
+        <Link className="nav-link" to="/anony/home">
+          Homepage
+        </Link>
+      )
+    }
 
     return (
       <div>
@@ -79,11 +93,7 @@ class Navbar extends Component {
 
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/profiles">
-                    Developers
-                  </Link>
-                </li>
+                <li className="nav-item">{developersLink}</li>
               </ul>
 
               {isAuthenticated ? authLinks : guestLink}

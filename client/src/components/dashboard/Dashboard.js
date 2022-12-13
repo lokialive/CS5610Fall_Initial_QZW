@@ -7,7 +7,9 @@ import Spinner from '../../common/Spinner'
 import ProfileActives from './ProfileActives'
 import Experience from './Experience'
 import Education from './Education'
-
+import CompanyProfileActives from './CompanyProfileActives'
+import Work from './Work'
+import PostSummary from './PostSummary'
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile()
@@ -22,45 +24,79 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile
     let dashboardContent
 
+    console.log(this.props)
     // check id prfofile is null or loading is true
     if (profile === null || loading) {
       dashboardContent = <Spinner />
     } else {
       //check if ther is profile data exist
       if (Object.keys(profile).length > 0) {
-        dashboardContent = (
-          <div>
-            <p className="lead text-muted">
-              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
-            </p>
+        if (user.type === 'Employee') {
+          dashboardContent = (
+            <div>
+              <p className="lead text-muted">
+                Welcome{' '}
+                <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+              </p>
 
-            <ProfileActives />
+              <ProfileActives />
 
-            {/* Education and Experience */}
-            <Experience experience={profile.experience} />
-            <Education education={profile.education} />
+              {/* Education and Experience */}
+              <Experience experience={profile.experience} />
+              <br></br>
+              <Education education={profile.education} />
+              <br></br>
+              <PostSummary />
 
-            {/* Delete current account button */}
-            <div style={{ marginBottom: '60px' }} />
-            <button
-              onClick={this.onDeleteClick.bind(this)}
-              className="btn btn-danger"
-            >
-              Delete Current Account
-            </button>
-          </div>
-        )
+              {/* Delete current account button
+              <div style={{ marginBottom: '60px' }} />
+              <button
+                onClick={this.onDeleteClick.bind(this)}
+                className="btn btn-danger"
+              >
+                Delete Current Account
+              </button> */}
+            </div>
+          )
+        } else if (user.type === 'Employer') {
+          dashboardContent = (
+            <div>
+              <p className="lead text-muted">
+                Welcome{' '}
+                <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+              </p>
+
+              <CompanyProfileActives />
+              <Work work={profile.work} />
+            </div>
+          )
+        }
       } else {
         //After logging in, if there is no detail info
-        dashboardContent = (
-          <div>
-            <p className="lead text-muted">Welcome, {user.name}!</p>
-            <p>There is no detail information, please add more!</p>
-            <Link className="btn btn-lg btn-info" to="/create-profile">
-              Create My Profile
-            </Link>
-          </div>
-        )
+        if (user.type == 'Employee') {
+          dashboardContent = (
+            <div>
+              <p className="lead text-muted">Welcome, {user.name}!</p>
+              <p>There is no detail information, please add more!</p>
+              <Link className="btn btn-lg btn-info" to="/create-profile">
+                Create My Profile
+              </Link>
+            </div>
+          )
+        } else if (user.type == 'Employer') {
+          dashboardContent = (
+            <div>
+              <p className="lead text-muted">Welcome, {user.name}!</p>
+              <p>There is no detail information, please add more!</p>
+              <Link
+                className="btn btn-lg btn-info"
+                to="/create-company-profile"
+              >
+                Create My Profile
+              </Link>
+            </div>
+          )
+        }
       }
     }
     return (

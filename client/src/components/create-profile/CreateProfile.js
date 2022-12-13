@@ -12,6 +12,7 @@ class CreateProfile extends Component {
     super(props)
 
     this.state = {
+      type: 'Employee',
       displaySocialInputs: false,
       handle: '',
       company: '',

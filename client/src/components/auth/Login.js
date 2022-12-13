@@ -10,6 +10,8 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      // add type for login 11：20-13：20
+      type: '',
       errors: {},
     }
 
@@ -44,6 +46,7 @@ class Login extends Component {
     const newUser = {
       email: this.state.email,
       password: this.state.password,
+      // add new type element
     }
     // console.log(newUser);
     this.props.loginUser(newUser)
@@ -77,6 +80,38 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
+
+                {/* role checkbox for login   11.20- 13:16 */}
+
+                <div>
+                  <span>My role:</span>
+                  &nbsp;&nbsp;&nbsp;
+                  <input
+                    type={'radio'}
+                    value={'Employee'}
+                    checked={this.state.type === 'Employee'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Employee &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input
+                    type={'radio'}
+                    value={'Employer'}
+                    checked={this.state.type === 'Employer'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Employer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input
+                    type={'radio'}
+                    value={'Admin'}
+                    checked={this.state.type === 'Admin'}
+                    onChange={this.onChange}
+                    name="type"
+                  />{' '}
+                  Admin
+                </div>
+
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
