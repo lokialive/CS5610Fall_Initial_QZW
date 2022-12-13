@@ -59,15 +59,10 @@ export const createProfile = (profileData, history) => (dispatch) => {
 }
 
 // Delete Current Acount Action
-export const deleteAccout = () => (dispatch) => {
+export const deleteAccout = (profile, history) => (dispatch) => {
   axios
-    .delete('/api/profile')
-    .then((res) =>
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: {},
-      }),
-    )
+    .delete('/api/profile', profile)
+    .then((res) => history.push('/profiles'))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
@@ -80,6 +75,19 @@ export const deleteAccout = () => (dispatch) => {
 export const addExperience = (expData, history) => (dispatch) => {
   axios
     .post('/api/profile/experience', expData)
+    .then((res) => history.push('/dashboard'))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }),
+    )
+}
+
+//Add work
+export const addWork = (workData, history) => (dispatch) => {
+  axios
+    .post('/api/profile/work', workData)
     .then((res) => history.push('/dashboard'))
     .catch((err) =>
       dispatch({
@@ -106,6 +114,24 @@ export const addEducation = (expData, history) => (dispatch) => {
 export const deleteExperience = (id) => (dispatch) => {
   axios
     .delete(`/api/profile/experience/${id}`)
+    .then((res) =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      }),
+    )
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }),
+    )
+}
+
+// Delete an Experience by experience id
+export const deleteWork = (id) => (dispatch) => {
+  axios
+    .delete(`/api/profile/work/${id}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,

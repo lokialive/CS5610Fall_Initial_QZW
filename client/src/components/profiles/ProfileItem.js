@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
 import isEmpty from '../../validation/is-empty'
+import { connect } from 'react-redux'
+import { deleteAccout } from '../../actions/profileActions'
 class ProfileItem extends Component {
-  render() {
-    const { profile } = this.props
+  onDeleteClick(profile) {
+    console.log(profile)
 
+    this.props.deleteAccout(profile, this.props.history)
+  }
+
+  render() {
+    const { profile, auth } = this.props
+    console.log(this.props)
+    let profile_id = profile._id
+    let profile_user_id = profile.user._id
     return (
       <div className="card card-body bg-light mb-3">
         <div className="row">
@@ -16,7 +26,9 @@ class ProfileItem extends Component {
             <h3>{profile.user.name}</h3>
             <p>{profile.status}</p>
             <p>
-              {isEmpty(profile.location) ? null : (
+              {isEmpty(profile.location) ? (
+                'No location.'
+              ) : (
                 <span>{profile.location}</span>
               )}
             </p>
@@ -24,7 +36,7 @@ class ProfileItem extends Component {
               More Information
             </Link>
           </div>
-          <div className="col-md-4 d-none d-lg-block">
+          <div className="col-md-4 d-lg-block">
             <h4>Skills</h4>
             <ul className="list-group">
               {profile.skills.slice(0, 4).map((skill, index) => (
@@ -35,6 +47,18 @@ class ProfileItem extends Component {
               ))}
             </ul>
           </div>
+          <div className="col-md-8"> </div>
+          <div className="col-md-1">
+            {auth.user.type === 'Admin' ? (
+              <button
+                onClick={this.onDeleteClick.bind(this, profile)}
+                type="button"
+                className="btn btn-danger mr-1"
+              >
+                Delete Account
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     )
@@ -43,6 +67,12 @@ class ProfileItem extends Component {
 
 ProfileItem.propTypes = {
   profile: PropTypes.object.isRequired,
+  deleteAccout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 }
 
-export default ProfileItem
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps, { deleteAccout })(ProfileItem)

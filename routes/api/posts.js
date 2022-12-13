@@ -94,6 +94,7 @@ router.post(
   '/like/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    console.log('delete begin')
     Profile.findOne({ user: req.user.id }).then((profile) => {
       Post.findById(req.params.id)
         .then((post) => {
