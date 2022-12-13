@@ -11,7 +11,9 @@ export const matchCompaniesByName = async (name) => {
 }
 
 export const fetchCompanyByID = async (id) => {
-    const response = await axios.get(`${fetch_url}${id}/?api_key=${api_key}`)
+    const response = await axios.get(`${fetch_url}${id}/?api_key=${api_key}`, {
+        responseType: "json"
+    })
     const company = response.data;
-    return company
+    return company;
 }

@@ -13,12 +13,12 @@ const companiesSlice = createSlice({
                                            [fetchCompanyThunk.pending]:
                                                (state) => {
                                                    state.loading = true
-                                                   state.companies = []
+                                                   state.company = []
                                                },
                                            [fetchCompanyThunk.fulfilled]:
                                                (state, {payload}) => {
                                                    state.loading = false
-                                                   state.companies = payload
+                                                   state.company = payload
                                                },
                                            [fetchCompanyThunk.rejected]:
                                                (state) => {

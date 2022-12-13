@@ -55,7 +55,7 @@ class App extends Component {
               <Route exact path="/profiles" component={Profiles} />
 
               {/*12.6- new component*/}
-              <Route path="/companies/:cid" component={CompanyComponent} />
+              <Route path="/companies/*" component={CompanyComponent} />
               <Route exact path="/search" component={SearchComponent}/>
 
 

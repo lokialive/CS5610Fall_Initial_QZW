@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
 const CompanyItem = (
     {
         company = {
@@ -11,6 +13,7 @@ const CompanyItem = (
         }
     }
 ) => {
+    const dispatch = useDispatch();
     return (
         <li className="list-group-item">
             <div className="row">

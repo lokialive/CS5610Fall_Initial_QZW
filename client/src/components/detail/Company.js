@@ -1,11 +1,10 @@
 import React, {useEffect} from "react";
-import {useLocation} from "react-router-dom";
 import PositionList from "../Position/PositionList";
 import "./company.css"
 import background from "../../img/linkedin.png"
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {Link, useLocation} from "react-router-dom";
 import {fetchCompanyThunk} from "../search/search-thunks.js";
-import {Link} from "react-router-dom";
 
 const CompanyComponent = () => {
     const {company, loading} = useSelector(
@@ -16,6 +15,7 @@ const CompanyComponent = () => {
     useEffect(()=>{
         dispatch(fetchCompanyThunk(paths[2]))
     }, [])
+
 
     return(
 
@@ -29,7 +29,7 @@ const CompanyComponent = () => {
             <li className="list-group-item">
                 <div >
                     <img width={'100%'} className="position-relative pe-0 pt-2 pb-2 " alt={"post-img"} src={background} />
-                    <img style={{width:150,height:140}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={company.favicon} />
+                    <img style={{width:80,height:80}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={company.favicon} />
                 </div>
 
 
@@ -52,25 +52,24 @@ const CompanyComponent = () => {
 
 
                 <div >
-                    <label className="pe-5 pt-3 text-secondary" >{company.industry}</label>
-                    <label className="pe-5 pt-3 text-secondary" >{company.employees_range}</label>
+                    <label className="pe-5 pt-3 text-secondary" >Industry: {company.industry}</label>
+                    <label className="pe-5 pt-3 text-secondary" >Employees: {company.employees_range}</label>
 
                 </div>
 
                 <div>
-
-                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address.city}, {company.address.state}</label>*/}
+                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address.city}</label>*/}
                     <label className=" ps-1 pe-5 pt-3 text-secondary">Founded: {company.year_founded}</label>
                 </div>
 
                 <div>
-                    <label className="pe-5 pt-3 text-secondary" >Website:{company.website}</label>
+                    Website: <a href={`${company.website}`} className="pe-5 pt-3 text-secondary" >{company.website}</a>
                 </div>
 
                 <div >
-                    <label className=" ps-1 pe-5 pt-3 text-secondary" >Following  2345</label>
+                    <label className=" ps-1 pe-5 pt-3 text-secondary" >Following  0</label>
 
-                    <label className=" ps-1 pe-5 pt-3 text-secondary">Followers  34156</label>
+                    <label className=" ps-1 pe-5 pt-3 text-secondary">Followers  0</label>
                 </div>
 
                 <div className="fw-bolder pt-3 pe-5">Opening Job Position</div>
