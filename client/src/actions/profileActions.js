@@ -59,15 +59,10 @@ export const createProfile = (profileData, history) => (dispatch) => {
 }
 
 // Delete Current Acount Action
-export const deleteAccout = () => (dispatch) => {
+export const deleteAccout = (profile, history) => (dispatch) => {
   axios
-    .delete('/api/profile')
-    .then((res) =>
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: {},
-      }),
-    )
+    .delete('/api/profile', profile)
+    .then((res) => history.push('/profiles'))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,

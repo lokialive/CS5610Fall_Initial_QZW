@@ -292,7 +292,7 @@ router.delete(
       .then((profile) => {
         const removeIndex = profile.experience
           .map((item) => item.id)
-          .indexOf(req.params.epx_id)
+          .indexOf(req.params.edu_id)
 
         profile.education.splice(removeIndex, 1)
 
@@ -302,18 +302,25 @@ router.delete(
   },
 )
 
-// $route  DELETE api/profile
+// $route  DELETE api/profile/
 // @desc   Delete current user account
 // @access Private
 router.delete(
-  '/education/:edu_id',
-  passport.authenticate('jwt', { session: false }),
+  '/',
+  // passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-      User.findOneAndRemove({ _id: req.user.id }).then(() => {
-        res.json({ success: true })
+    Profile.findById(req.body._id)
+      .then((post) => post.remove())
+      .then(() => {
+        User.findById(req.body.user._id)
+          .then((user) => user.remove())
+          .then(() => {
+            res.json({ success: true })
+          })
       })
-    })
+      .catch((err) =>
+        res.status(402).json({ postnotfound: 'Cannot find the user.' }),
+      )
   },
 )
 
