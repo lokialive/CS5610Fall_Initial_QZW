@@ -4,23 +4,6 @@
     <list default="true" id="f6e920e4-8cbb-4c06-90d9-08ad77faa45d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/positionActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/positionActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/Position-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/Position-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/PositionFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/PositionFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/PositionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/PositionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/PositionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/PositionList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/detail/Company.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/detail/Company.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducers/positionReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/positionReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CompanyFollowerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/CompanyFollowerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Positions.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Positions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/positions-controller/positions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/positions-controller/positions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/positions-controller/positions-dao.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/positions-controller/positions-dao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/positions-controller/positions-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/positions-controller/positions-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/positions-controller/positions-schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/positions-controller/positions-schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
