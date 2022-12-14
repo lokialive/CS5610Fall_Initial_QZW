@@ -32,6 +32,7 @@ import AddWork from './components/create-profile/AddWork'
 import AnonyProfile from './components/Anonymous/AnonyProfile'
 import AnonyHome from './components/Anonymous/AnonyHome'
 
+
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
 
@@ -46,6 +47,9 @@ if (localStorage.jwtToken) {
     window.location.href = '/login';
   }
 }
+
+
+
 
 class App extends Component {
   render() {

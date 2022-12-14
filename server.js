@@ -4,6 +4,10 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const app = express()
 
+const cors = require('cors')
+
+
+
 // import routes
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
@@ -33,6 +37,8 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
   next()
 })
+
+
 
 // passport initialization
 app.use(passport.initialize())

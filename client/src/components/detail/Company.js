@@ -57,7 +57,7 @@ const CompanyComponent = () => {
                 </div>
 
                 <div>
-                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address}</label>*/}
+                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address.city}</label> */}
                     <label className="pe-5 pt-2 pb-2 text-secondary">
                         <i className="bi bi-calendar-check-fill pe-1"></i>Founded: {company.year_founded}</label>
                 </div>
