@@ -32,6 +32,7 @@ import AddWork from './components/create-profile/AddWork'
 import AnonyProfile from './components/Anonymous/AnonyProfile'
 import AnonyHome from './components/Anonymous/AnonyHome'
 import LoginHome from './components/Home/LoginHome'
+import AdminCompanies from './components/Admin/AdminCompanies'
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken)
@@ -91,6 +92,13 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
+                  path="/admin-companies"
+                  component={AdminCompanies}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
                   path="/create-profile"
                   component={CreateProfile}
                 />
@@ -140,7 +148,7 @@ class App extends Component {
                 <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
       </Provider>

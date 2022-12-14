@@ -31,7 +31,7 @@ class CreateCompanyProfile extends Component {
     e.preventDefault()
 
     const profileData = {
-      type: this.state.type,
+      type: 'Employer',
       handle: this.state.handle,
       companyName: this.state.companyName,
       website: this.state.website,

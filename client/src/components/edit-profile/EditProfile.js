@@ -13,6 +13,7 @@ class CreateProfile extends Component {
     super(props)
 
     this.state = {
+      type: 'Employee',
       displaySocialInputs: false,
       handle: '',
       company: '',
@@ -27,6 +28,7 @@ class CreateProfile extends Component {
       tengxunkt: '',
       wangyikt: '',
       errors: {},
+      followed: [],
     }
 
     this.onChange = this.onChange.bind(this)
@@ -41,6 +43,7 @@ class CreateProfile extends Component {
     e.preventDefault()
 
     const profileData = {
+      type: 'Employee',
       handle: this.state.handle,
       company: this.state.company,
       website: this.state.website,
@@ -53,6 +56,7 @@ class CreateProfile extends Component {
       QQ: this.state.QQ,
       tengxunkt: this.state.tengxunkt,
       wangyikt: this.state.wangyikt,
+      followed: this.state.followed,
     }
 
     // console.log(profileData);

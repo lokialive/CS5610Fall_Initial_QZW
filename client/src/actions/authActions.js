@@ -50,9 +50,18 @@ export const setCurrentUser = (decoded) => {
 }
 
 // logout
-export const logoutUser = () => (dispatch) => {
+export const logoutUser = (history) => (dispatch) => {
   //delete token
   localStorage.removeItem('jwtToken')
   setAuthToken(false)
   dispatch(setCurrentUser({}))
+  axios
+    .post('/api/profile/test')
+    .then((res) => history.push('/'))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }),
+    )
 }

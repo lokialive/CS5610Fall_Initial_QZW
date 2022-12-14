@@ -9,7 +9,7 @@ import Experience from './Experience'
 import Education from './Education'
 import CompanyProfileActives from './CompanyProfileActives'
 import Work from './Work'
-import PostSummary from './PostSummary'
+// import PostSummary from './PostSummary'
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile()
@@ -24,7 +24,6 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile
     let dashboardContent
 
-    console.log(this.props)
     // check id prfofile is null or loading is true
     if (profile === null || loading) {
       dashboardContent = <Spinner />
@@ -72,7 +71,7 @@ class Dashboard extends Component {
         }
       } else {
         //After logging in, if there is no detail info
-        if (user.type == 'Employee') {
+        if (user.type === 'Employee') {
           dashboardContent = (
             <div>
               <p className="lead text-muted">Welcome, {user.name}!</p>
@@ -82,7 +81,7 @@ class Dashboard extends Component {
               </Link>
             </div>
           )
-        } else if (user.type == 'Employer') {
+        } else if (user.type === 'Employer') {
           dashboardContent = (
             <div>
               <p className="lead text-muted">Welcome, {user.name}!</p>

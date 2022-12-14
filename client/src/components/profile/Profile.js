@@ -20,7 +20,7 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile
     let profileContent
 
-    console.log(this.props)
+    // console.log(this.props)
 
     if (profile === null || loading) {
       profileContent = <Spinner />

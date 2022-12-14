@@ -133,6 +133,16 @@ const ProfileSchema = new Schema({
       },
     },
   ],
+  followed: [
+    {
+      companyName: {
+        type: String,
+      },
+      companyId: {
+        type: String,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,

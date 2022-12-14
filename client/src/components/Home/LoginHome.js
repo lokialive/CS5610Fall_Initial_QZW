@@ -10,7 +10,8 @@ import Spinner from '../../common/Spinner'
 // import CompanyProfileActives from './CompanyProfileActives'
 import Work from '../dashboard/Work'
 import PostSummary from '../dashboard/PostSummary'
-import Profiles from '../profiles/Profiles'
+import FollowedList from './FollowedList'
+// import Profiles from '../profiles/Profiles'
 
 class LoginHome extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class LoginHome extends Component {
   render() {
     const { user } = this.props.auth
     const { profile, loading } = this.props.profile
-
+    console.log(profile)
     let dashboardContent = <div></div>
 
     // console.log(this.props)
@@ -37,9 +38,9 @@ class LoginHome extends Component {
                 <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
               </p>
 
-              <div class="container">
-                <div class="row user-list">
-                  <div class="col-sm-8 user">
+              <div className="container">
+                <div className="row user-list">
+                  <div className="col-sm-8 user">
                     {/* <img
                       class="img-circle"
                       src="../../../public/img/position.png"
@@ -51,12 +52,23 @@ class LoginHome extends Component {
                       Location :{' '}
                       {profile.location ? profile.location : 'No location.'}
                     </p>
-                    <p>Year Founded : {profile.yearFounded}</p>
-                    <p>phone : {profile.phone}</p>
+                    <p>
+                      Industry :{' '}
+                      {profile.industry ? profile.industry : 'No data.'}
+                    </p>
+                    <p>
+                      Website : {profile.website ? profile.website : 'No data.'}
+                    </p>
+                    <p>phone : {profile.phone ? profile.phone : 'No data'}</p>
+                    <p>
+                      Introduction : {profile.bio ? profile.bio : 'No data'}
+                    </p>
                   </div>
                 </div>
                 <br></br>
                 <Work work={profile.work} />
+                <br></br>
+                <PostSummary />
               </div>
             </div>
           )
@@ -74,7 +86,7 @@ class LoginHome extends Component {
             </div>
           )
         }
-      } else if (user.type == 'Employee') {
+      } else if (user.type === 'Employee') {
         if (Object.keys(profile).length > 0) {
           dashboardContent = (
             <div>
@@ -111,7 +123,9 @@ class LoginHome extends Component {
                   </div>
 
                   {/* Company list */}
-                  <div className="col-sm-4 user">Company List</div>
+                  <div className="col-sm-4 user">
+                    <FollowedList />
+                  </div>
                 </div>
               </div>
             </div>

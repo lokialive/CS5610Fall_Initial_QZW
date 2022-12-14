@@ -8,6 +8,7 @@ class PostForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      user_type: '',
       text: '',
       errors: {},
     }
@@ -29,8 +30,9 @@ class PostForm extends Component {
       text: this.state.text,
       name: user.name,
       avatar: user.avatar,
+      user_type: user.type,
     }
-
+    console.log(newPost)
     this.props.addPost(newPost)
     this.setState({ text: '' })
   }

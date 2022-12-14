@@ -18,6 +18,7 @@ class Work extends Component {
             <button
               onClick={this.onDeleteClick.bind(this, work._id)}
               className="btn btn-danger"
+              style={{ float: 'right', marginRight: '20px' }}
             >
               Delete
             </button>

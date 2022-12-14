@@ -12,18 +12,16 @@ class AnonyProfiles extends Component {
     this.props.getProfiles()
   }
   render() {
-    console.log(this.props)
     const { profiles, loading } = this.props.profile
     let developers
     let companies
-    console.log(profiles)
 
     if (profiles === null || loading) {
       developers = <Spinner />
     } else {
       if (profiles.length > 0) {
         developers = profiles
-          .filter((profile) => profile.status)
+          .filter((profile) => profile.type === 'Employee')
           .slice(0, 4)
           .map((profile) => (
             <AnonyProfileItem key={profile._id} profile={profile} />
@@ -53,10 +51,10 @@ class AnonyProfiles extends Component {
         <div className="profiles">
           <div className="row">
             <div className="col">
-              <h3 style={{ 'text-align': 'center' }}>Developers</h3>
+              <h3 style={{ textAlign: 'center' }}>Developers</h3>
             </div>
             <div className="col">
-              <h3 style={{ 'text-align': 'center' }}>Companies</h3>
+              <h3 style={{ textAlign: 'center' }}>Companies</h3>
             </div>
           </div>
 
