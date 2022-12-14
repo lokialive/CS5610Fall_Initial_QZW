@@ -6,7 +6,6 @@ const fetch_url = 'https://api.orb-intelligence.com/3/fetch/'
 
 const matchCompaniesByName = async (req, res) => {
     const name = req.query.name
-    console.log(name);
     const response = await axios.get(`${url}?api_key=${api_key}&country=us&name=${name}`);
     res.json(response.data)
 }
