@@ -8,9 +8,12 @@ const CompanyFollowerSchema = new Schema({
   },
   followers: [
     {
-      user: {
+      userId: {
         type: Schema.Types.ObjectId,
         ref: 'users',
+      },
+      userHandle: {
+        type: String,
       },
     },
   ],
@@ -20,4 +23,7 @@ const CompanyFollowerSchema = new Schema({
   },
 })
 
-module.exports = Post = mongoose.model('post', CompanyFollowerSchema)
+module.exports = CompanyFollowerList = mongoose.model(
+  'companyfollowerlist',
+  CompanyFollowerSchema,
+)
