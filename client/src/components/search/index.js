@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {matchCompaniesThunk} from "./search-thunks.js";
 import CompanyList from "./companyList.js";
 import "./index.css";
@@ -7,9 +7,9 @@ import "./index.css";
 const SearchComponent = () => {
     let [searchTerm, setSearchTerm] = useState('');
     const dispatch = useDispatch();
-    useEffect(()=> {
-            dispatch(matchCompaniesThunk(searchTerm));
-        }, [])
+    // useEffect(()=> {
+    //         dispatch(matchCompaniesThunk(searchTerm));
+    //     }, [])
     return (
         <div>
         <h3>Search</h3>

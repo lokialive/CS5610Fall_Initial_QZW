@@ -2,7 +2,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
+const cors = require('cors')
+const SearchController = require('./controller/search-controller.js')
 const app = express()
+app.use(cors())
+app.use(express.json())
 
 // import routes
 const users = require('./routes/api/users')
@@ -47,6 +51,9 @@ app.get('/', (req, res) => {
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/posts', posts)
+
+// Use search controller
+SearchController(app)
 
 const port = process.env.PORT || 8080
 

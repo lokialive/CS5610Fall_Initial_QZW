@@ -34,15 +34,19 @@ const CompanyComponent = () => {
           />
         </div>
 
-        <div className="fw-bolder  pb-2 h2">
-          {company.name}
-          <div>
+
+        <div className="fw-bolder  pb-2 h2 row">
+          <div className="col-10">
+            {company.name}
+          </div>
+          <div className="col-2">
             <Link to="/search">
               <button className="btn btn-primary rounded-pill float-end pt-2">
-                Return
+                Follow
               </button>
             </Link>
           </div>
+
         </div>
 
         <div className="text-secondary  pe-1 pt-1 pb-2  wd-text-post-small">
