@@ -23,7 +23,9 @@ const CompanyFollowerSchema = new Schema({
   },
 })
 
+
 module.exports = CompanyFollowerList = mongoose.model(
   'companyfollowerlist',
   CompanyFollowerSchema,
 )
+

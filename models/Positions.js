@@ -25,4 +25,4 @@ const PositionsSchema = new Schema({
   },
 })
 
-module.exports = Post = mongoose.model('post', PositionsSchema)
+module.exports = Postions = mongoose.model('positions', PositionsSchema)

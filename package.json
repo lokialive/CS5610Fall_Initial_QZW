@@ -1,5 +1,6 @@
 {
   "name": "developers_match",
+
   "version": "1.0.0",
   "description": "mern full stack project",
   "main": "index.js",

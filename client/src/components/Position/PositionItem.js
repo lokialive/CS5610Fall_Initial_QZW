@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Component } from 'react'
 import position from "../../img/position.png"
 import {useDispatch} from "react-redux";
 import {deletePositionThunk} from "./Position-thunks";
+
+
 const PositionItem = (
     {
         post = {
@@ -51,5 +53,7 @@ const PositionItem = (
     );
 };
 
+
 export default PositionItem;
+
 
