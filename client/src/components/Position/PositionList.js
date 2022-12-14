@@ -1,15 +1,18 @@
+
 import React, {Component, useEffect} from "react";
 
 import {useDispatch, useSelector} from "react-redux";
 
-import PositionItem from "./PositionItem";
 
-import positions from "./PositionInfo.json";
+import PositionItem from './PositionItem'
 
-import {findPositionsThunk}  from "./Position-thunks";
+import positions from './PositionInfo.json'
+
+import { findPositionsThunk } from './Position-thunks'
 
 
 const PositionList = () => {
+
 
     const {positions, loading} = useSelector(state => state.positions)
 
@@ -31,5 +34,6 @@ const PositionList = () => {
     );
 };
 export default PositionList;
+
 
 
