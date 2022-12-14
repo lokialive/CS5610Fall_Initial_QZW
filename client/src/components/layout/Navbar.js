@@ -95,7 +95,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
           <div className="container">
             <Link className="navbar-brand" to="/">
-              DevelopersMatch
+              Homepage
             </Link>
             <button
               className="navbar-toggler"
@@ -108,10 +108,12 @@ class Navbar extends Component {
 
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
+                <Link className="navbar-brand" to="/search">
+                  <li> Go!SearchCompany </li>
+                </Link>
                 <li className="nav-item">{developersLink}</li>
                 <li className="nav-item">{companyLink}</li>
               </ul>
-
               {isAuthenticated ? authLinks : guestLink}
             </div>
           </div>
