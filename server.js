@@ -1,13 +1,13 @@
-//const PositionsController = require("./routes/api/positions-controller/positions-controller.js")
-import PositionsController from "./routes/api/positions-controller/positions-controller.js";
-import express from 'express';
-import mongoose from "mongoose";
-//const express = require('express')
-//const mongoose = require('mongoose')
-import bodyParser from "body-parser";
-//const bodyParser = require('body-parser')
-import passport from 'passport'
-//const passport = require('passport')
+const PositionsController = require("./routes/api/positions-controller/positions-controller.js")
+//import PositionsController from "./routes/api/positions-controller/positions-controller.js";
+//import express from 'express';
+//import mongoose from "mongoose";
+const express = require('express')
+const mongoose = require('mongoose')
+//import bodyParser from "body-parser";
+const bodyParser = require('body-parser')
+//import passport from 'passport'
+const passport = require('passport')
 const app = express()
 
 // import routes
@@ -17,6 +17,7 @@ const app = express()
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
+const positions = require('./routes/api/positions')
 
 // DB config
 const db = require('./config/keys').mongoURI
@@ -56,6 +57,7 @@ app.get('/', (req, res) => {
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/posts', posts)
+//app.use('api/positions',positions)
 PositionsController(app)
 
 const port = process.env.PORT || 8080

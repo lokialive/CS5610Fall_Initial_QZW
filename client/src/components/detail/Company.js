@@ -11,6 +11,7 @@ const CompanyComponent = () => {
   const { pathname } = useLocation()
   const paths = pathname.split('/')
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchCompanyThunk(paths[2]))
   }, [])
@@ -68,6 +69,12 @@ const CompanyComponent = () => {
         </div>
 
         <div>
+          <label className="pe-3">
+            <button className="btn btn-primary rounded-pill ">
+              + Follow
+            </button>
+          </label>
+
           <button className="btn btn-outline-info rounded-pill">
             <a
               href={`${company.website}`}
@@ -80,8 +87,6 @@ const CompanyComponent = () => {
         </div>
 
         <div>
-          <label className=" ps-1 pe-5 pt-3 text-secondary">Following 0</label>
-
           <label className=" ps-1 pe-5 pt-3 text-secondary">Followers 0</label>
         </div>
 

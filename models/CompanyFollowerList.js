@@ -20,4 +20,4 @@ const CompanyFollowerSchema = new Schema({
   },
 })
 
-module.exports = Post = mongoose.model('post', CompanyFollowerSchema)
+module.exports = CompanyFollower = mongoose.model('CompanyFollower', CompanyFollowerSchema)
