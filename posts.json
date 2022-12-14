@@ -2,6 +2,7 @@
     "_id": "5b02295b8ec10703fec25886",
     "text": "this is a text",
     "user": "5b001a367b5c05219d578477",
+
     "likes": [
         {
             "_id": "5b02338b8ec10703fec2588a",

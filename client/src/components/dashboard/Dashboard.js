@@ -46,7 +46,6 @@ class Dashboard extends Component {
               <br></br>
               <Education education={profile.education} />
               <br></br>
-              <PostSummary />
 
               {/* Delete current account button
               <div style={{ marginBottom: '60px' }} />

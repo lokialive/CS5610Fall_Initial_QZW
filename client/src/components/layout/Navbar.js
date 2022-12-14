@@ -68,11 +68,18 @@ class Navbar extends Component {
         </Link>
       )
     } else {
+      developersLink = <div></div>
+    }
+
+    let homepageLink
+    if (isAuthenticated) {
       developersLink = (
-        <Link className="nav-link" to="/anony/home">
-          Homepage
+        <Link className="nav-link" to="/profiles">
+          Developers
         </Link>
       )
+    } else {
+      developersLink = <div></div>
     }
 
     return (
