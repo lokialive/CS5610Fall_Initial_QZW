@@ -1,10 +1,19 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const passport = require('passport')
+//const PositionsController = require("./routes/api/positions-controller/positions-controller.js")
+import PositionsController from "./routes/api/positions-controller/positions-controller.js";
+import express from 'express';
+import mongoose from "mongoose";
+//const express = require('express')
+//const mongoose = require('mongoose')
+import bodyParser from "body-parser";
+//const bodyParser = require('body-parser')
+import passport from 'passport'
+//const passport = require('passport')
 const app = express()
 
 // import routes
+//import users from './routes/api/users';
+//import profile from './routes/api/profile';
+//import posts from './routes/api/posts';
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
@@ -47,6 +56,7 @@ app.get('/', (req, res) => {
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/posts', posts)
+PositionsController(app)
 
 const port = process.env.PORT || 8080
 
