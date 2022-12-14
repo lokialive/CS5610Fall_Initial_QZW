@@ -332,4 +332,22 @@ router.delete(
   },
 )
 
+//add a new followed company to the user's follow list
+router.post(
+  '/follow/:userId/:id/:companyName',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.params.userId }).then((profile) => {
+      const newFollow = {
+        companyName: req.params.companyName,
+        companyId: req.params.id,
+      }
+
+      profile.followed.unshift(newFollow)
+
+      profile.save().then((profile) => res.json(profile))
+    })
+  },
+)
+
 module.exports = router
