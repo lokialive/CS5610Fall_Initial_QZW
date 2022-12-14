@@ -75,11 +75,6 @@ const CompanyComponent = () => {
             {company.name}
           </div>
           <div className="col-2">
-            <Link to="/search">
-              <button className="btn btn-primary rounded-pill float-end pt-2">
-                Follow
-              </button>
-            </Link>
             {/* add follow click */}
             {followButton}
           </div>
