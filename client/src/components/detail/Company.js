@@ -31,42 +31,52 @@ const CompanyComponent = () => {
                     <img style={{width:80,height:80}} className="position-absolute  wd-nudge-up  rounded-2" alt={"user"} src={company.favicon} />
                 </div>
 
-                <div className="fw-bolder fs-4  pb-2">
+                <div className="fw-bolder  pb-2 h2">
                     {company.name}
                     <div >
                         <Link to="/moreDetail/edit-profile">
                             <button
-                                className="btn btn-primary rounded-pill float-end pt-2">Save</button>
+                                className="btn btn-primary rounded-pill float-end pt-2">Return</button>
                         </Link>
 
                     </div>
                 </div>
 
 
-                <div className="text-secondary  pe-1 pt-2 pb-2  wd-text-post-small">
+                <div className="text-secondary  pe-1 pt-1 pb-2  wd-text-post-small">
                     {company.description}
                 </div>
 
 
                 <div >
-                    <label className="pe-5 pt-3 text-secondary" >Industry: {company.industry}</label>
-                    <label className="pe-5 pt-3 text-secondary" >Employees: {company.employees_range}</label>
+                    <label className="pe-5 pt-2 text-secondary" >
+                        <i className="bi bi-briefcase-fill"></i>   {company.industry}</label>
+                    <label className="pe-5 pt-2 text-secondary" >
+                        <i className="bi bi-people-fill"></i> Employees: {company.employees_range}</label>
 
                 </div>
 
                 <div>
-                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address.city}</label>*/}
-                    <label className=" ps-1 pe-5 pt-3 text-secondary">Founded: {company.year_founded}</label>
+                    {/*<label className="pe-5 pt-3 text-secondary" >Location: {company.address}</label>*/}
+                    <label className="pe-5 pt-2 pb-2 text-secondary">
+                        <i className="bi bi-calendar-check-fill pe-1"></i>Founded: {company.year_founded}</label>
                 </div>
 
                 <div>
-                    Website: <a href={`${company.website}`} className="pe-5 pt-3 text-secondary" >{company.website}</a>
+                    <button className="btn btn-outline-info rounded-pill">
+                        <a href={`${company.website}`} className="ps-2 pe-2 pt-3 fw-bold text-primary" >
+                            Visit Website
+                            <i className="ps-2 bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </button>
                 </div>
+
+
 
                 <div >
-                    <label className=" ps-1 pe-5 pt-3 text-secondary" >Following  0</label>
+                    <label className=" ps-1 pe-5 pt-3 text-secondary" >Following   0</label>
 
-                    <label className=" ps-1 pe-5 pt-3 text-secondary">Followers  0</label>
+                    <label className=" ps-1 pe-5 pt-3 text-secondary">Followers   0</label>
                 </div>
 
                 <div className="fw-bolder pt-3 pe-5">Opening Job Position</div>
