@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 // const url = 'https://api.orb-intelligence.com/3/match/'
 // const api_key = "c66c5dad-395c-4ec6-afdf-7b78eb94166a"
@@ -16,3 +16,19 @@ export const fetchCompanyByID = async (id) => {
     const company = response.data;
     return company;
 }
+
+export const followCompany = async (id, companyName, userId, userHandle) => {
+  //1. add company name and company id to the user profile by userId
+  await axios.put(`/api/profile/${userHandle}/${id}/${companyName}`, {
+    responseType: 'json',
+  })
+  const response = await axios.put(
+    `/api/follow/${id}/${userId}/${userHandle}`,
+    {
+      responseType: 'json',
+    },
+  )
+  const followerList = response.data.results
+  return followerList
+}
+
