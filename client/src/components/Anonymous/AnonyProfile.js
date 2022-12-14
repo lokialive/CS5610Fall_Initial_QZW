@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ProfileHeader from '../profile/ProfileHeader'
-import ProfileAbout from '../profile/ProfileAbout'
+// import ProfileAbout from '../profile/ProfileAbout'
 
 import { getProfileByHandle } from '../../actions/profileActions'
 import Spinner from '../../common/Spinner'
@@ -18,8 +18,6 @@ class AnonyProfile extends Component {
     const { profile, loading } = this.props.profile
     let profileContent
 
-    console.log(this.props)
-
     if (profile === null || loading) {
       profileContent = <Spinner />
     } else {
@@ -29,7 +27,7 @@ class AnonyProfile extends Component {
             <div className="col-md-6" />
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
+          {/* <ProfileAbout profile={profile} /> */}
           <h3>To view more, please sign in.</h3>
         </div>
       )

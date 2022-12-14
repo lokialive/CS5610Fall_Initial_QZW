@@ -30,7 +30,23 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props
-    console.log(post)
+    let companyLabel = <br></br>
+    if (post.user_type === 'Employer') {
+      companyLabel = (
+        <div
+          className="label btn-light"
+          style={{
+            color: 'lightBlue',
+            marginLeft: '0%',
+            width: '28%',
+            fontSize: '12px',
+          }}
+        >
+          company
+        </div>
+      )
+    }
+
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -42,7 +58,8 @@ class PostItem extends Component {
                 alt=""
               />
             </a>
-            <br />
+
+            {companyLabel}
             <p className="text-center">{post.name}</p>
           </div>
           <div className="col-md-10">
@@ -59,7 +76,7 @@ class PostItem extends Component {
                       'text-info': this.findUserLike(post.likes),
                     })}
                   ></i>
-                  <span className="badge badge-light">{post.likes.length}</span>
+                  <span className="badge badge-dark"> {post.likes.length}</span>
                 </button>
                 <button
                   onClick={this.onUnlikeClick.bind(this, post._id)}

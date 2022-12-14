@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import Spinner from '../../common/Spinner'
 import { getProfiles } from '../../actions/profileActions'
-import ProfileItem from './ProfileItem'
-class Profiles extends Component {
+import AdminComItem from './AdminComItem'
+class AdminCompanies extends Component {
   // Get data
   componentDidMount() {
     this.props.getProfiles()
@@ -18,10 +18,12 @@ class Profiles extends Component {
     } else {
       if (profiles.length > 0) {
         profileItems = profiles
-          .filter((profile) => profile.type === 'Employee')
-          .map((profile) => <ProfileItem key={profile._id} profile={profile} />)
+          .filter((profile) => profile.type === 'Employer')
+          .map((profile) => (
+            <AdminComItem key={profile._id} profile={profile} />
+          ))
       } else {
-        profileItems = <h4>Currently, there is not developer info...</h4>
+        profileItems = <h4>Currently, there is not company account...</h4>
       }
     }
 
@@ -30,8 +32,7 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">Developers Profile</h1>
-              <p className="lead text-center">Check developer profile</p>
+              <h1 className="display-4 text-center">All Companies Profile</h1>
               {profileItems}
             </div>
           </div>
@@ -41,7 +42,7 @@ class Profiles extends Component {
   }
 }
 
-Profiles.propTypes = {
+AdminCompanies.propTypes = {
   getProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 }
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 })
 
-export default connect(mapStateToProps, { getProfiles })(Profiles)
+export default connect(mapStateToProps, { getProfiles })(AdminCompanies)

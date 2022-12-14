@@ -5,7 +5,7 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER,
+  // SET_CURRENT_USER,
 } from './types'
 
 //Get Current User Profile Action
@@ -59,14 +59,14 @@ export const createProfile = (profileData, history) => (dispatch) => {
 }
 
 // Delete Current Acount Action
-export const deleteAccout = (profile, history) => (dispatch) => {
+export const deleteAccout = (user_id, history) => (dispatch) => {
   axios
-    .delete('/api/profile', profile)
-    .then((res) => history.push('/profiles'))
+    .delete(`/api/profile/${user_id}`)
+    .then((res) => window.location.reload())
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: '',
       }),
     )
 }

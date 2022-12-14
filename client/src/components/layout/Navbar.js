@@ -10,7 +10,7 @@ class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault()
     this.props.clearCurrentProfile()
-    this.props.logoutUser()
+    this.props.logoutUser(this.props.history)
   }
 
   render() {
@@ -71,7 +71,6 @@ class Navbar extends Component {
       developersLink = <div></div>
     }
 
-    let homepageLink
     if (isAuthenticated) {
       developersLink = (
         <Link className="nav-link" to="/profiles">
@@ -80,6 +79,15 @@ class Navbar extends Component {
       )
     } else {
       developersLink = <div></div>
+    }
+
+    let companyLink = <div></div>
+    if (isAuthenticated && user.type === 'Admin') {
+      companyLink = (
+        <Link className="nav-link" to="/admin-companies">
+          Companies
+        </Link>
+      )
     }
 
     return (
@@ -101,6 +109,7 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">{developersLink}</li>
+                <li className="nav-item">{companyLink}</li>
               </ul>
 
               {isAuthenticated ? authLinks : guestLink}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-import isEmpty from '../../validation/is-empty'
+// import isEmpty from '../../validation/is-empty'
 class AnonyProfileItem extends Component {
   render() {
     const { profile } = this.props
@@ -15,7 +15,8 @@ class AnonyProfileItem extends Component {
           <div className="row">
             <div className="col-lg-6 col-md-4 col-4 ">
               <h4>{profile.user.name}</h4>
-              <p>{profile.status}</p>
+              <p>{profile.location ? profile.location : 'No location.'}</p>
+              <p>{profile.status ? profile.status : 'No status.'}</p>
               <Link
                 to={`/profile/anony/${profile.handle}`}
                 className="btn btn-info small"
@@ -26,7 +27,7 @@ class AnonyProfileItem extends Component {
             <div className="col-md-4 d-none d-lg-block">
               <h4>Skills</h4>
               <ul className="list-group" style={{ opacity: '0.5' }}>
-                {profile.skills.map((skill, index) => (
+                {profile.skills.slice(0, 3).map((skill, index) => (
                   <li key={index} className="list-group-item">
                     <i className="fa fa-check pr-1" />
                     {skill}

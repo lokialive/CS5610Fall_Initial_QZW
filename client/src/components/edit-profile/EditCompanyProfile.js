@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import TextFieldGroup from '../../common/TextFieldGroup'
 import TextAreaFieldGroup from '../../common/TextAreaFieldGroup'
-import SelectListGroup from '../../common/SelectListGroup'
+// import SelectListGroup from '../../common/SelectListGroup'
 import { createProfile, getCurrentProfile } from '../../actions/profileActions'
 import isEmpty from '../../validation/is-empty'
 
@@ -37,6 +37,7 @@ class EditCompanyProfile extends Component {
     e.preventDefault()
 
     const profileData = {
+      type: 'Employer',
       handle: this.state.handle,
       companyName: this.state.companyName,
       website: this.state.website,

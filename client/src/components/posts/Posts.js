@@ -24,7 +24,7 @@ class Posts extends Component {
     }
 
     let postForm = <PostForm />
-    if (user.type == 'Admin') {
+    if (user.type === 'Admin') {
       postForm = <div></div>
     }
 

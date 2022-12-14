@@ -34,6 +34,7 @@ router.post(
       name: req.body.name,
       avatar: req.body.avatar,
       user: req.user.id,
+      user_type: req.body.user_type,
     })
 
     newPost.save().then((post) => res.json(post))

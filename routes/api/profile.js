@@ -50,7 +50,8 @@ router.post(
 
     const profileFields = {}
     profileFields.user = req.user.id
-    if (req.body.type == 'Employee') {
+    if (req.body.type === 'Employee') {
+      profileFields.type = 'Employee'
       if (req.body.handle) profileFields.handle = req.body.handle
       if (req.body.company) profileFields.company = req.body.company
       if (req.body.website) profileFields.website = req.body.website
@@ -64,6 +65,8 @@ router.post(
         profileFields.skills = req.body.skills.split(',')
       }
 
+      if (req.body.followed) profileFields.followed = req.body.followed
+
       profileFields.social = {}
 
       if (req.body.wechat) profileFields.social.wechat = req.body.wechat
@@ -71,7 +74,8 @@ router.post(
       if (req.body.tengxunkt)
         profileFields.social.tengxunkt = req.body.tengxunkt
       if (req.body.wangyikt) profileFields.social.wangyikt = req.body.wangyikt
-    } else {
+    } else if (req.body.type === 'Employer') {
+      profileFields.type = 'Employer'
       if (req.body.phone) profileFields.phone = req.body.phone
       if (req.body.companyName) profileFields.companyName = req.body.companyName
       if (req.body.industry) profileFields.industry = req.body.industry
@@ -306,20 +310,24 @@ router.delete(
 // @desc   Delete current user account
 // @access Private
 router.delete(
-  '/',
+  '/:userId',
   // passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Profile.findById(req.body._id)
-      .then((post) => post.remove())
-      .then(() => {
-        User.findById(req.body.user._id)
-          .then((user) => user.remove())
-          .then(() => {
-            res.json({ success: true })
-          })
-      })
+    Profile.findOne({ user: req.params.userId })
+      .then((profile) =>
+        profile.remove().then(() => {
+          User.findOne({ _id: req.params.userId })
+            .then((user) => user.remove())
+            .then(() => {
+              res.json({ success: true })
+            })
+            .catch((err) =>
+              res.status(100).json({ postnotfound: 'Cannot find the user.' }),
+            )
+        }),
+      )
       .catch((err) =>
-        res.status(402).json({ postnotfound: 'Cannot find the user.' }),
+        res.status(100).json({ postnotfound: 'Cannot find the user.' }),
       )
   },
 )

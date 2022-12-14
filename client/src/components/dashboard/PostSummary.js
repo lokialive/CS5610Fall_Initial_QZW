@@ -11,12 +11,10 @@ class PostSummary extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { posts } = this.props.posts
     const userId = this.props.auth.user.id
-    console.log(userId)
     let postItems = posts
-      .filter((post) => post.user == userId)
+      .filter((post) => post.user === userId)
       .map((post, index) => (
         <tr key={index}>
           <td>

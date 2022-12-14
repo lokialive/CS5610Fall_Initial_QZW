@@ -35,7 +35,6 @@ class AddWork extends Component {
       description: this.state.description,
       errors: this.state.errors,
     }
-    console.log(workData)
     this.props.addWork(workData, this.props.history)
   }
 
