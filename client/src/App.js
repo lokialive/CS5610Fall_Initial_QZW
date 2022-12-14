@@ -1,7 +1,7 @@
 import React from 'react'
-import {Component} from "react";
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
- import Navbar from './components/layout/Navbar'
+import { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
 import Login from './components/auth/Login'
@@ -22,8 +22,8 @@ import { Provider } from 'react-redux'
 import store from './store'
 import CreateProfile from './components/create-profile/CreateProfile'
 import Post from './components/post/Post'
-import CompanyComponent from "./components/detail/Company";
-import SearchComponent from "./components/search";
+import CompanyComponent from './components/detail/Company'
+import SearchComponent from './components/search'
 
 import HomeComponent from './components/homePage/HomeComponent'
 import CreateCompanyProfile from './components/create-profile/CreateCompanyProfile'
@@ -31,19 +31,20 @@ import EditCompanyProfile from './components/edit-profile/EditCompanyProfile'
 import AddWork from './components/create-profile/AddWork'
 import AnonyProfile from './components/Anonymous/AnonyProfile'
 import AnonyHome from './components/Anonymous/AnonyHome'
+import LoginHome from './components/Home/LoginHome'
 
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.jwtToken)
 
   // decode token
-  const decoded = jwt_decode(localStorage.jwtToken);
-  store.dispatch(setCurrentUser(decoded));
+  const decoded = jwt_decode(localStorage.jwtToken)
+  store.dispatch(setCurrentUser(decoded))
 
   // chekc if the token is expired; If expired, jump to the login page.
-  const currentTime = Date.now() / 1000;
+  const currentTime = Date.now() / 1000
   if (decoded.exp < currentTime) {
-    store.dispatch(logoutUser());
-    window.location.href = '/login';
+    store.dispatch(logoutUser())
+    window.location.href = '/login'
   }
 }
 
@@ -63,7 +64,7 @@ class App extends Component {
 
               {/*12.6- new component*/}
               <Route path="/companies/*" component={CompanyComponent} />
-              <Route exact path="/search" component={SearchComponent}/>
+              <Route exact path="/search" component={SearchComponent} />
               <Route
                 exact
                 path="/company/HomePage/:handle"
@@ -83,6 +84,9 @@ class App extends Component {
               />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/home" component={LoginHome} />
               </Switch>
               <Switch>
                 <PrivateRoute

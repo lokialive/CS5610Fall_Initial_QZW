@@ -13,6 +13,7 @@ class Posts extends Component {
 
   render() {
     const { posts, loading } = this.props.post
+    const { user } = this.props.auth
 
     let postContent
 
@@ -22,13 +23,19 @@ class Posts extends Component {
       postContent = <PostFeed posts={posts} />
     }
 
+    let postForm = <PostForm />
+    if (user.type == 'Admin') {
+      postForm = <div></div>
+    }
+
     return (
       <div className="feed">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               {/*Display Post Content */}
-              <PostForm />
+
+              {postForm}
               {/* Display like numbers */}
               {postContent}
             </div>
@@ -42,9 +49,11 @@ class Posts extends Component {
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   post: state.post,
+  auth: state.auth,
 })
 export default connect(mapStateToProps, { getPosts })(Posts)
