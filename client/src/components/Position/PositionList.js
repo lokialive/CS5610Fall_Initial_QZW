@@ -1,32 +1,35 @@
-import React, {useEffect} from "react";
+import React, {Component, useEffect} from "react";
 
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-import PositionItem from "./PositionItem";
 
-import positions from "./PositionInfo.json";
+import PositionItem from './PositionItem'
 
-import {findPositionsThunk}  from "./Position-thunks";
+import positions from './PositionInfo.json'
+
+import { findPositionsThunk } from './Position-thunks'
+
 
 const PositionList = () => {
 
-    //const {positions, loading} = useSelector(state => state.positionData)
 
-    const dispatch = useDispatch();
+  const {positions, loading} = useSelector(state => state.positions)
 
-    useEffect(() => {
-        dispatch(findPositionsThunk())}, [])
+  const dispatch = useDispatch();
 
-    return(
+  useEffect(() => {
+    dispatch(findPositionsThunk())}, [])
 
-        <ul className="list-group">
+  return(
 
-            {
+      <ul className="list-group">
 
-                positions.map(position => <PositionItem key={position._id} post={position}/> )
-            }
-        </ul>
-    );
+
+        {
+          positions.map(position => <PositionItem key={position._id} post={position}/> )
+
+        }
+      </ul>
+  );
 };
 export default PositionList;
-

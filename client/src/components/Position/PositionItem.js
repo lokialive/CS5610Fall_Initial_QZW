@@ -1,6 +1,6 @@
 import React from "react";
 import position from "../../img/position.png"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {deletePositionThunk} from "./Position-thunks";
 const PositionItem = (
     {
@@ -13,6 +13,8 @@ const PositionItem = (
         }
     }
 ) => {
+
+    const {user, loading} = useSelector(state => state.auth)
 
     const dispatch = useDispatch();
     const deletePositionHandler = (id) => {
@@ -28,7 +30,8 @@ const PositionItem = (
                 </div>
 
                 <div className="col-10 pt-1 pb-1 pe-0">
-                    <i className="bi bi-x-lg float-end" onClick={()=> deletePositionHandler(post._id)}></i>
+                    <i className="bi bi-x-lg float-end" onClick={
+                        user.type === 'Admin' ? ()=> deletePositionHandler(post._id) : null}></i>
 
                     <div className="ps-3 fw-bolder">
                         {post.title}
