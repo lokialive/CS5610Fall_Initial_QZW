@@ -18,8 +18,8 @@ export const findPositions = async () => {
   return positions
 }
 
-export const deletePosition = async (tid) => {
-  const response = await axios.delete(`${POSITIONS_API}/${tid}`)
+export const deletePosition = async (pid) => {
+  const response = await axios.delete(`${POSITIONS_API}/${pid}`)
   return response.data
 }
 

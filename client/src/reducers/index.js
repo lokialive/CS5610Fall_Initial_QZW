@@ -5,6 +5,7 @@ import profileReducer from './profileReducer'
 import postReducer from './postReducer'
 import companyReducer from "./companyReducer.js";
 import companiesReducer from "./companiesReducer.js";
+import positionReducer from "./Position-reducer.js";
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile: profileReducer,
   post: postReducer,
   companies: companiesReducer,
-  company: companyReducer
+  company: companyReducer,
+  positions: positionReducer
 })

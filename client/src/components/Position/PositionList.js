@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import PositionItem from './PositionItem'
 
@@ -9,7 +9,7 @@ import positions from './PositionInfo.json'
 import { findPositionsThunk } from './Position-thunks'
 
 const PositionList = () => {
-  //const {positions, loading} = useSelector(state => state.positionData)
+  const {positions, loading} = useSelector(state => state.positions)
 
   const dispatch = useDispatch()
 

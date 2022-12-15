@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const cors = require('cors')
 const SearchController = require('./controller/search-controller.js')
+const PositionController = require('./routes/api/positions-controller/positions-controller.js')
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -56,6 +57,9 @@ app.use('/api/follow', follows)
 
 // Use search controller
 SearchController(app)
+
+// Use position controller
+PositionController(app)
 
 const port = process.env.PORT || 8080
 
