@@ -1,31 +1,32 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
-import { useState } from 'react'
 import FollowerItem from './FollowerItem'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchFollowerListThunk } from '../search/search-thunks'
 // import { getFollowers } from './follower-thunks'
 
-const FollowerList = (props) => {
-  //const {positions, loading} = useSelector(state => state.positionData)
-  const companyId = props.companyId
-  // const dispatch = useDispatch()
-  const { followers, setFollowers } = useState([])
+const FollowerList = () => {
+  const { company } = useSelector((state) => state.company)
+  console.log('a')
+  let companyId = company.orb_num
+  console.log(companyId)
 
-  const getFollowers = async () => {
-    const { data } = await axios.get(`/follow/${companyId}`)
-    const followers = data
-    setFollowers(followers)
-  }
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getFollowers()
-  }, [])
+    console.log(companyId)
+    dispatch(fetchFollowerListThunk(companyId))
+  }, [companyId])
 
+  const state = useSelector((state) => state)
+  console.log(state)
+  const { followers } = useSelector((state) => state.followers)
+  console.log(followers)
   return (
     <ul className="list-group">
       {followers &&
         followers.map((follower) => (
-          <FollowerItem key={follower._id} post={follower} />
+          <FollowerItem key={follower._id} follower={follower} />
         ))}
     </ul>
   )

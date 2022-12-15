@@ -7,7 +7,8 @@ import './index.css'
 
 class FollowedList extends Component {
   render() {
-    const { profile } = this.props
+    const { profile } = this.props.profile
+
     let companyItems = null
     if (profile.followed && profile.followed.length > 0) {
       companyItems = profile.followed.map((company, index) => (

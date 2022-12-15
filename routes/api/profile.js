@@ -134,7 +134,6 @@ router.get('/handle/:handle', (req, res) => {
 router.get('/user/:user_id', (req, res) => {
   const errors = {}
   Profile.findOne({ user: req.params.user_id })
-    .populate('user', ['name', 'avatart'])
     .then((profile) => {
       if (!profile) {
         errors.noprofile = 'Cannot find the user profile by user._id'
@@ -335,7 +334,7 @@ router.delete(
 //add a new followed company to the user's follow list
 router.post(
   '/follow/:userId/:id/:companyName',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.params.userId }).then((profile) => {
       const newFollow = {
