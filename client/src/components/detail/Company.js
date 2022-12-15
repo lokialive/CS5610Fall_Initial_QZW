@@ -65,6 +65,13 @@ const CompanyComponent = () => {
       Follow
     </button>
   )
+
+  let followlist = isAuthenticated ? (
+    <FollowerList />
+  ) : (
+    <p> Please log in to view the followers</p>
+  )
+
   if (!isAuthenticated) {
     followButton = (
       <button
@@ -165,7 +172,7 @@ const CompanyComponent = () => {
 
       <PositionList />
       <div className="fw-bolder pt-3 pe-5">Followers</div>
-      <FollowerList />
+      {followlist}
     </div>
   )
 }
