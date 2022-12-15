@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18224f49-76b4-49df-8e3a-81fbf48c8687" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/detail/FollowerItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/detail/FollowerList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../controller/search-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../routes/api/follow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Position/Position-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Position/Position-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Position/PositionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Position/PositionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Position/PositionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Position/PositionList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/detail/Company.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/detail/Company.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search/search-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/search-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search/search-thunks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/search-thunks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../models/CompanyFollowerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../models/CompanyFollowerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api/positions-controller/positions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api/positions-controller/positions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api/positions-controller/positions-dao.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api/positions-controller/positions-dao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api/positions-controller/positions-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api/positions-controller/positions-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api/positions-controller/positions-schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api/positions-controller/positions-schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server.js" afterDir="false" />
-    </list>
+    <list default="true" id="18224f49-76b4-49df-8e3a-81fbf48c8687" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
