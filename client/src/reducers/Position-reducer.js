@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import positions from './PositionInfo.json';
+import positions from '../components/Position/PositionInfo.json';
 
 
-import {findPositionsThunk,deletePositionThunk,createPositionThunk,updatePositionThunk} from "./Position-thunks";
+import {findPositionsThunk,deletePositionThunk,createPositionThunk,updatePositionThunk} from "../components/Position/Position-thunks.js";
 
 const initialState = {
     positions: [],
     loading: false
 }
-
 
 
 
