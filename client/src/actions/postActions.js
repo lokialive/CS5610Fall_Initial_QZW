@@ -11,7 +11,7 @@ import {
 // Add Posts Action
 export const addPost = (postData) => (dispatch) => {
   axios
-    .post('/api/posts', postData)
+    .post('https://developers-backend.onrender.com/api/posts', postData)
     .then((res) =>
       dispatch({
         type: ADD_POST,
@@ -30,7 +30,7 @@ export const addPost = (postData) => (dispatch) => {
 export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading)
   axios
-    .get('/api/posts')
+    .get('https://developers-backend.onrender.com/api/posts')
     .then((res) =>
       dispatch({
         type: GET_POSTS,
@@ -49,7 +49,7 @@ export const getPosts = () => (dispatch) => {
 export const getPost = (id) => (dispatch) => {
   dispatch(setPostLoading)
   axios
-    .get(`/api/posts/${id}`)
+    .get(`https://developers-backend.onrender.com/api/posts/${id}`)
     .then((res) =>
       dispatch({
         type: GET_POST,
@@ -67,7 +67,7 @@ export const getPost = (id) => (dispatch) => {
 // Delete Single Post by post id
 export const deletePost = (id) => (dispatch) => {
   axios
-    .delete(`/api/posts/${id}`)
+    .delete(`https://developers-backend.onrender.com/api/posts/${id}`)
     .then((res) =>
       dispatch({
         type: DELETE_POST,
@@ -85,7 +85,7 @@ export const deletePost = (id) => (dispatch) => {
 // Like a Post Action By post id
 export const addLike = (id) => (dispatch) => {
   axios
-    .post(`/api/posts/like/${id}`)
+    .post(`https://developers-backend.onrender.com/api/posts/like/${id}`)
     .then((res) => window.location.reload())
     .catch((err) =>
       dispatch({
@@ -98,7 +98,7 @@ export const addLike = (id) => (dispatch) => {
 // Unlike a post by post id
 export const removeLike = (id) => (dispatch) => {
   axios
-    .post(`/api/posts/unlike/${id}`)
+    .post(`https://developers-backend.onrender.com/api/posts/unlike/${id}`)
     .then((res) => window.location.reload())
     .catch((err) =>
       dispatch({
@@ -111,7 +111,10 @@ export const removeLike = (id) => (dispatch) => {
 // Add a comment to a post by post id
 export const addComment = (postId, commentData) => (dispatch) => {
   axios
-    .post(`/api/posts/comment/${postId}`, commentData)
+    .post(
+      `https://developers-backend.onrender.com/api/posts/comment/${postId}`,
+      commentData,
+    )
     .then((res) =>
       dispatch({
         type: GET_POST,
@@ -129,7 +132,9 @@ export const addComment = (postId, commentData) => (dispatch) => {
 // Delete a comment by post id and comment id
 export const deleteComment = (postId, commentId) => (dispatch) => {
   axios
-    .delete(`/api/posts/comment/${postId}/${commentId}`)
+    .delete(
+      `https://developers-backend.onrender.com/api/posts/comment/${postId}/${commentId}`,
+    )
     .then((res) =>
       dispatch({
         type: GET_POST,

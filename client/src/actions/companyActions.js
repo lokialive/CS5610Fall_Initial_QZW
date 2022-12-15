@@ -7,7 +7,7 @@ import { GET_COMPANIES, COMPANIES_LOADDING, GET_ERRORS } from './types.js'
 export const getCompanies = () => (dispatch) => {
   dispatch(setCompanyLoading)
   axios
-    .get('/api/companies')
+    .get('https://developers-backend.onrender.com/api/companies')
     .then((res) =>
       dispatch({
         type: GET_COMPANIES,

@@ -12,7 +12,7 @@ import {
 export const getCurrentProfile = () => (dispatch) => {
   // Loading image
   dispatch(setProfileLoading())
-  axios('/api/profile')
+  axios('https://developers-backend.onrender.com/api/profile')
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -30,7 +30,7 @@ export const getCurrentProfile = () => (dispatch) => {
 // Get User Profile By handle
 export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading())
-  axios(`/api/profile/handle/${handle}`)
+  axios(`https://developers-backend.onrender.com/api/profile/handle/${handle}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -48,7 +48,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
 // Create New Profile Action
 export const createProfile = (profileData, history) => (dispatch) => {
   axios
-    .post('/api/profile', profileData)
+    .post('https://developers-backend.onrender.com/api/profile', profileData)
     .then((res) => history.push('/dashboard'))
     .catch((err) =>
       dispatch({
@@ -61,7 +61,7 @@ export const createProfile = (profileData, history) => (dispatch) => {
 // Delete Current Acount Action
 export const deleteAccout = (user_id, history) => (dispatch) => {
   axios
-    .delete(`/api/profile/${user_id}`)
+    .delete(`https://developers-backend.onrender.com/api/profile/${user_id}`)
     .then((res) => window.location.reload())
     .catch((err) =>
       dispatch({
@@ -74,7 +74,10 @@ export const deleteAccout = (user_id, history) => (dispatch) => {
 // Add Experience Action
 export const addExperience = (expData, history) => (dispatch) => {
   axios
-    .post('/api/profile/experience', expData)
+    .post(
+      'https://developers-backend.onrender.com/api/profile/experience',
+      expData,
+    )
     .then((res) => history.push('/dashboard'))
     .catch((err) =>
       dispatch({
@@ -87,7 +90,7 @@ export const addExperience = (expData, history) => (dispatch) => {
 //Add work
 export const addWork = (workData, history) => (dispatch) => {
   axios
-    .post('/api/profile/work', workData)
+    .post('https://developers-backend.onrender.com/api/profile/work', workData)
     .then((res) => history.push('/dashboard'))
     .catch((err) =>
       dispatch({
@@ -100,7 +103,10 @@ export const addWork = (workData, history) => (dispatch) => {
 // Add Education Action
 export const addEducation = (expData, history) => (dispatch) => {
   axios
-    .post('/api/profile/education', expData)
+    .post(
+      'https://developers-backend.onrender.com/api/profile/education',
+      expData,
+    )
     .then((res) => history.push('/dashboard'))
     .catch((err) =>
       dispatch({
@@ -113,7 +119,9 @@ export const addEducation = (expData, history) => (dispatch) => {
 // Delete an Experience by experience id
 export const deleteExperience = (id) => (dispatch) => {
   axios
-    .delete(`/api/profile/experience/${id}`)
+    .delete(
+      `https://developers-backend.onrender.com/api/profile/experience/${id}`,
+    )
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -131,7 +139,7 @@ export const deleteExperience = (id) => (dispatch) => {
 // Delete an Experience by experience id
 export const deleteWork = (id) => (dispatch) => {
   axios
-    .delete(`/api/profile/work/${id}`)
+    .delete(`https://developers-backend.onrender.com/api/profile/work/${id}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -149,7 +157,9 @@ export const deleteWork = (id) => (dispatch) => {
 // Delete an Education by experience id
 export const deleteEducation = (id) => (dispatch) => {
   axios
-    .delete(`/api/profile/education/${id}`)
+    .delete(
+      `https://developers-backend.onrender.com/api/profile/education/${id}`,
+    )
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -168,7 +178,7 @@ export const deleteEducation = (id) => (dispatch) => {
 export const getProfiles = () => (dispatch) => {
   dispatch(setProfileLoading())
   axios
-    .get('/api/profile/all')
+    .get('https://developers-backend.onrender.com/api/profile/all')
     .then((res) =>
       dispatch({
         type: GET_PROFILES,

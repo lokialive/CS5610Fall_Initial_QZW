@@ -7,7 +7,10 @@ import { SET_CURRENT_USER } from './types.js'
 //User register action
 export const registerUser = (userData, history) => (dispatch) => {
   axios
-    .post('/api/users/register', userData)
+    .post(
+      'https://developers-backend.onrender.com/api/users/register',
+      userData,
+    )
     .then((res) => history.push('/login'))
     .catch((err) =>
       dispatch({
@@ -20,7 +23,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 // User login action
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post('/api/users/login', userData)
+    .post('https://developers-backend.onrender.com/api/users/login', userData)
     .then((res) => {
       const { token } = res.data
       // console.log(token);
@@ -56,7 +59,7 @@ export const logoutUser = (history) => (dispatch) => {
   setAuthToken(false)
   dispatch(setCurrentUser({}))
   axios
-    .post('/api/profile/test')
+    .post('https://developers-backend.onrender.com/api/profile/test')
     // .then((res) => history.push('/home'))
     .catch((err) =>
       dispatch({
