@@ -12,36 +12,35 @@ router.get('/test', (req, res) => {
 
 //GEt all followers by companyId
 router.get('/:companyId', (req, res) => {
-  const errors = {}
-  CompanyFollowerList.findOne({ companyId: req.params.companyId })
-    .then((followerList) => {
-      res.json(followerList.followers)
+  CompanyFollowerList.find({ companyId: req.params.companyId })
+    .then((res) => {
+      res.json(res)
     })
     .catch((err) => res.status(404).json(err))
 })
 
 router.post('/add/:id/:userId/:userHandle', (req, res) => {
-  CompanyFollowerList.findOne({ companyId: req.params.id }).then((list) => {
-    if (list && list.followers) {
-    } else {
-      //create a new
-      const newList = new CompanyFollowerList({
-        companyId: req.params.id,
-        followers: [],
-      })
-
-      newList.save()
-    }
-  })
-  CompanyFollowerList.findOne({ companyId: req.params.id }).then((list) => {
-    const newFollower = {
-      userId: req.params.userId,
-      userHandle: req.params.userHandle,
-    }
-    list.followers.unshift(newFollower)
-
-    list.save().then((list) => res.json(list))
-  })
+  // const newFollower = new CompanyFollowerList({
+  //   companyId: req.params.id,
+  //   userId: req.params.userId,
+  //   userHandle: req.params.userHandle,
+  // })
+  // newFollower.save()
+  CompanyFollowerList.create({
+    companyId: req.params.id,
+    userId: req.params.userId,
+    userHandle: req.params.userHandle,
+  }).then((data) => console.log(res.json(data)))
 })
+
+// CompanyFollowerList.findOne({ companyId: req.params.id }).then((list) => {
+//   const newFollower = {
+//     userId: req.params.userId,
+//     userHandle: req.params.userHandle,
+//   }
+//   list.followers.unshift(newFollower)
+
+//   list.save().then((list) => res.json(list))
+// })
 
 module.exports = router

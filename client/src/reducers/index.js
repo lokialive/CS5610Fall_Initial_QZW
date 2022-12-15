@@ -7,7 +7,7 @@ import companyReducer from './companyReducer.js'
 import companiesReducer from './companiesReducer.js'
 import followerReducer from './followerReducer'
 
-import positionsReducer from "./Position-reducer.js"
+import positionsReducer from './Position-reducer.js'
 
 export default combineReducers({
   auth: authReducer,
@@ -17,5 +17,5 @@ export default combineReducers({
   companies: companiesReducer,
   company: companyReducer,
   followers: followerReducer,
-  positions: positionsReducer
+  positions: positionsReducer,
 })

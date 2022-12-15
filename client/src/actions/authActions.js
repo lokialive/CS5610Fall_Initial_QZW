@@ -57,7 +57,7 @@ export const logoutUser = (history) => (dispatch) => {
   dispatch(setCurrentUser({}))
   axios
     .post('/api/profile/test')
-    .then((res) => history.push('/'))
+    // .then((res) => history.push('/home'))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,

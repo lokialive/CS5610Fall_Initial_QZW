@@ -39,14 +39,14 @@ export const followCompany = async (data) => {
   let companyName = datas[1]
   let userId = datas[2]
   let userHandle = datas[3]
-
-  let response = await fetch(
+  console.log(userHandle)
+  await fetch(
     `http://localhost:8080/api/profile/follow/${userId}/${id}/${companyName}`,
     {
       method: 'POST',
     },
   )
-  let res = await fetch(
+  await fetch(
     `http://localhost:8080/api/follow/add/${id}/${userId}/${userHandle}`,
     {
       method: 'POST',

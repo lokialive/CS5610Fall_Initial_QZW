@@ -19,6 +19,7 @@ export const fetchFollowerListThunk = createAsyncThunk(
 export const followCompanyThunk = createAsyncThunk(
   'followCompany',
   async (data) => {
+    console.log(data)
     await service.followCompany(data)
   },
 )

@@ -5,12 +5,13 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../../actions/authActions'
 import { PropTypes } from 'prop-types'
 import { clearCurrentProfile } from '../../actions/profileActions'
-
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault()
+    // window.location.href('http://localhost:3000/')
     this.props.clearCurrentProfile()
     this.props.logoutUser(this.props.history)
+    window.location.href = '/'
   }
 
   render() {

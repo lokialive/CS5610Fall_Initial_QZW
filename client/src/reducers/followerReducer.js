@@ -1,27 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchFollowerListThunk } from '../components/search/search-thunks.js'
+
+import {
+  findFollowersThunk,
+  createFollowerThunk,
+} from '../components/follower/Follower-thunk'
 
 const initialState = {
   followers: [],
   loading: false,
 }
 
-const followerSlice = createSlice({
+const followersSlice = createSlice({
   name: 'followers',
   initialState,
   extraReducers: {
-    [fetchFollowerListThunk.pending]: (state) => {
+    [findFollowersThunk.pending]: (state) => {
       state.loading = true
       state.followers = []
     },
-    [fetchFollowerListThunk.fulfilled]: (state, { payload }) => {
+    [findFollowersThunk.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.followers = payload
     },
-    [fetchFollowerListThunk.rejected]: (state) => {
+    [findFollowersThunk.rejected]: (state) => {
       state.loading = false
+    },
+
+    [createFollowerThunk.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.followers = payload
     },
   },
 })
 
-export default followerSlice.reducer
+export default followersSlice.reducer

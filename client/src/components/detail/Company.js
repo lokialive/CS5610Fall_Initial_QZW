@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PositionList from '../Position/PositionList'
 import './company.css'
 import background from '../../img/linkedin.png'
@@ -7,9 +7,11 @@ import { useLocation } from 'react-router-dom'
 import { fetchCompanyThunk } from '../search/search-thunks.js'
 import FollowerList from './FollowerList'
 import { connect } from 'react-redux'
-import { followCompanyThunk } from '../search/search-thunks.js'
+// import { followCompanyThunk } from '../search/search-thunks.js'
+import { createFollowerThunk } from '../follower/Follower-thunk'
 import { getCurrentProfile } from '../../actions/profileActions'
-import { fetchFollowerListThunk } from '../search/search-thunks.js'
+import { findFollowersThunk } from '../follower/Follower-thunk'
+
 const CompanyComponent = () => {
   const { company, loading } = useSelector((state) => state.company)
   const { user } = useSelector((state) => state.auth)
@@ -17,9 +19,10 @@ const CompanyComponent = () => {
   const { pathname } = useLocation()
   const paths = pathname.split('/')
   const dispatch = useDispatch()
+  const { isAuthenticated } = useSelector((state) => state.auth)
+  console.log(isAuthenticated)
 
   let companyId = company.orb_num
-  console.log(companyId)
   const handleClick = () => {
     let data =
       company.orb_num +
@@ -30,7 +33,9 @@ const CompanyComponent = () => {
       '-' +
       profile.handle
 
-    dispatch(followCompanyThunk(data))
+    console.log(data)
+    dispatch(createFollowerThunk(data))
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -46,6 +51,12 @@ const CompanyComponent = () => {
   //   dispatch(fetchFollowerListThunk(id))
   // }, [company.orb_num])
 
+  useEffect(() => {
+    console.log(companyId)
+    dispatch(findFollowersThunk(companyId))
+  }, [companyId])
+  const { followers } = useSelector((state) => state.followers)
+
   let followButton = (
     <button
       className="btn btn-success rounded-pill float-end pt-2"
@@ -54,7 +65,7 @@ const CompanyComponent = () => {
       Follow
     </button>
   )
-  if (!user) {
+  if (!isAuthenticated) {
     followButton = (
       <button
         className="btn btn-success rounded-pill float-end pt-2"
@@ -66,7 +77,7 @@ const CompanyComponent = () => {
         Follow
       </button>
     )
-  } else if (user.type === 'Employer') {
+  } else if (user.type === 'Employer' || user.type === 'Admin') {
     followButton = null
   } else {
     followButton = (
@@ -144,9 +155,9 @@ const CompanyComponent = () => {
         </div>
 
         <div>
-          <label className=" ps-1 pe-5 pt-3 text-secondary">Following 0</label>
-
-          <label className=" ps-1 pe-5 pt-3 text-secondary">Followers 0</label>
+          <label className=" ps-1 pe-5 pt-3 text-secondary">
+            Followers: {followers ? followers.length : 0}
+          </label>
         </div>
 
         <div className="fw-bolder pt-3 pe-5">Opening Job Position</div>
