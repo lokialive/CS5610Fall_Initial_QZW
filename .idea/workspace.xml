@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b08e5a2-805b-43e6-8364-e13eab6288a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/reducers/Position-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/Position-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/Position-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/PositionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/PositionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Position/PositionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Position/PositionList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671069432599</updated>
-      <workItem from="1671069435653" duration="2319000" />
+      <workItem from="1671069435653" duration="3369000" />
     </task>
     <servers />
   </component>
