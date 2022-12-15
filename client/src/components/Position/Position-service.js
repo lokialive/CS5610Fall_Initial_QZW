@@ -5,7 +5,7 @@ import axios from 'axios'
 //const API_BASE = process.env.REACT_APP_API_BASE;
 
 //const POSITIONS_API = `${API_BASE}/positions`;
-const POSITIONS_API = 'http://localhost:8080/api/positions'
+const POSITIONS_API = '/api/positions'
 
 export const createPosition = async (position) => {
   const response = await axios.post(POSITIONS_API, position)

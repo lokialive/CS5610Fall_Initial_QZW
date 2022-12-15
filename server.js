@@ -1,15 +1,30 @@
+
+const PositionsController = require("./routes/api/positions-controller/positions-controller.js")
+//import PositionsController from "./routes/api/positions-controller/positions-controller.js";
+//import express from 'express';
+//import mongoose from "mongoose";
+//const express = require('express')
+//const mongoose = require('mongoose')
+//import bodyParser from "body-parser";
+//const bodyParser = require('body-parser')
+//import passport from 'passport'
+//const passport = require('passport')
+
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const cors = require('cors')
 const SearchController = require('./controller/search-controller.js')
-const PositionController = require('./routes/api/positions-controller/positions-controller.js')
+
 const app = express()
 app.use(cors())
 app.use(express.json())
 
 // import routes
+//import users from './routes/api/users';
+//import profile from './routes/api/profile';
+//import posts from './routes/api/posts';
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
@@ -59,7 +74,13 @@ app.use('/api/follow', follows)
 SearchController(app)
 
 // Use position controller
-PositionController(app)
+PositionsController(app)
+
+app.use('/api/follow', follows)
+
+// Use search controller
+SearchController(app)
+
 
 const port = process.env.PORT || 8080
 
