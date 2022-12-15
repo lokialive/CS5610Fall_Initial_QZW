@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import { deleteWork } from '../../actions/profileActions'
+import { deleteWork } from '../../actions/profileActions.js'
 
 class Work extends Component {
   onDeleteClick(id) {

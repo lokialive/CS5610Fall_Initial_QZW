@@ -1,7 +1,7 @@
 import React from 'react'
 import position from '../../img/position.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { deletePositionThunk } from './Position-thunks'
+import { deletePositionThunk } from './Position-thunks.js'
 const PositionItem = ({
   post = {
     _id: 123,

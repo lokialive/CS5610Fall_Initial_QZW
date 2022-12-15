@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import Spinner from '../../common/Spinner'
-import { getProfiles } from '../../actions/profileActions'
-import AnonyProfileItem from './AnonyProfiles'
-import AnonyCompanyItem from './AnonyCom'
+import Spinner from '../../common/Spinner.js'
+import { getProfiles } from '../../actions/profileActions.js'
+import AnonyProfileItem from './AnonyProfiles.js'
+import AnonyCompanyItem from './AnonyCom.js'
 
 class AnonyProfiles extends Component {
   // Get data

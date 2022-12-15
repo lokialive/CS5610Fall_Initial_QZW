@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   findFollowersThunk,
   createFollowerThunk,
-} from '../components/follower/Follower-thunk'
+} from '../components/follower/Follower-thunk.js'
 
 const initialState = {
   followers: [],

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PostItem from './PostItem'
+import PostItem from './PostItem.js'
 import { PropTypes } from 'prop-types'
 class PostFeed extends Component {
   render() {

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Spinner from '../../common/Spinner'
-import { getPost } from '../../actions/postActions'
-import PostItem from '../posts/PostItem'
-import CommentForm from './CommentForm'
-import CommentFeed from './CommentFeed'
+import Spinner from '../../common/Spinner.js'
+import { getPost } from '../../actions/postActions.js'
+import PostItem from '../posts/PostItem.js'
+import CommentForm from './CommentForm.js'
+import CommentFeed from './CommentFeed.js'
 
 class Post extends Component {
   componentDidMount() {

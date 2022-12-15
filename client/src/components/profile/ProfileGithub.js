@@ -11,6 +11,7 @@ class ProfileGithub extends Component {
       repos: [],
     }
   }
+
   componentDidMount() {
     const { username } = this.props
     const { count, sort, clientId, clientSecret } = this.state
@@ -20,7 +21,7 @@ class ProfileGithub extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (this.refs.myRef) {
+        if (this.myRef) {
           this.setState({
             repos: data,
           })
@@ -30,6 +31,7 @@ class ProfileGithub extends Component {
   }
 
   render() {
+    let myref
     const { repos } = this.state
     const repoItems = repos.map((repo) => (
       <div key={repo.id} className="card card-body mb-2">
@@ -57,7 +59,7 @@ class ProfileGithub extends Component {
       </div>
     ))
     return (
-      <div ref="myRef">
+      <div ref={(ref) => (this.myRef = ref)}>
         <hr />
         <h3 className="mb-4">Github Respository Information</h3>
         {repoItems}

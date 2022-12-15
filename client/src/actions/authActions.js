@@ -1,8 +1,8 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import setAuthToken from '../utils/setAuthToken'
-import { GET_ERRORS } from './types'
-import { SET_CURRENT_USER } from './types'
+import setAuthToken from '../utils/setAuthToken.js'
+import { GET_ERRORS } from './types.js'
+import { SET_CURRENT_USER } from './types.js'
 
 //User register action
 export const registerUser = (userData, history) => (dispatch) => {

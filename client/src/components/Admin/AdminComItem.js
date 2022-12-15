@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import isEmpty from '../../validation/is-empty'
 import { connect } from 'react-redux'
-import { deleteAccout } from '../../actions/profileActions'
+import { deleteAccout } from '../../actions/profileActions.js'
 class AdminComItem extends Component {
   onDeleteClick(user_id) {
     this.props.deleteAccout(user_id, this.props.history)
@@ -21,25 +20,21 @@ class AdminComItem extends Component {
           <div className="col-lg-6 col-md-4 col-8">
             <h3>{profile.companyName}</h3>
             <p>
-              {isEmpty(profile.location) ? (
-                'No location.'
-              ) : (
+              {profile.location ? (
                 <span>{profile.location}</span>
+              ) : (
+                'No location.'
               )}
             </p>
             <p>
-              {isEmpty(profile.yearFounded) ? (
-                'No founded year.'
-              ) : (
+              {profile.yearFounded ? (
                 <span>{profile.yearFounded}</span>
+              ) : (
+                'No founded year.'
               )}
             </p>
             <p>
-              {isEmpty(profile.website) ? (
-                'No website.'
-              ) : (
-                <span>{profile.website}</span>
-              )}
+              {profile.website ? <span>{profile.website}</span> : 'No website.'}
             </p>
           </div>
           <div className="col-md-4 d-lg-block">

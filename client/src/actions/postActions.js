@@ -6,7 +6,7 @@ import {
   DELETE_POST,
   POST_LOADDING,
   GET_ERRORS,
-} from './types'
+} from './types.js'
 
 // Add Posts Action
 export const addPost = (postData) => (dispatch) => {

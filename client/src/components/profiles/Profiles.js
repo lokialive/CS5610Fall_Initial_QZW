@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import Spinner from '../../common/Spinner'
-import { getProfiles } from '../../actions/profileActions'
-import ProfileItem from './ProfileItem'
+import Spinner from '../../common/Spinner.js'
+import { getProfiles } from '../../actions/profileActions.js'
+import ProfileItem from './ProfileItem.js'
 class Profiles extends Component {
   // Get data
   componentDidMount() {

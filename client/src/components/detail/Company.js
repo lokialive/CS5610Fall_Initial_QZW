@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
-import PositionList from '../Position/PositionList'
+import PositionList from '../Position/PositionList.js'
 import './company.css'
 import background from '../../img/linkedin.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { fetchCompanyThunk } from '../search/search-thunks.js'
-import FollowerList from './FollowerList'
+import FollowerList from './FollowerList.js'
 import { connect } from 'react-redux'
 // import { followCompanyThunk } from '../search/search-thunks.js'
-import { createFollowerThunk } from '../follower/Follower-thunk'
-import { getCurrentProfile } from '../../actions/profileActions'
-import { findFollowersThunk } from '../follower/Follower-thunk'
+import { createFollowerThunk } from '../follower/Follower-thunk.js'
+import { getCurrentProfile } from '../../actions/profileActions.js'
+import { findFollowersThunk } from '../follower/Follower-thunk.js'
 
 const CompanyComponent = () => {
   const { company, loading } = useSelector((state) => state.company)

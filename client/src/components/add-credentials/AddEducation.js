@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import TextFieldGroup from '../../common/TextFieldGroup'
-import TextAreaFieldGroup from '../../common/TextAreaFieldGroup'
+import TextFieldGroup from '../../common/TextFieldGroup.js'
+import TextAreaFieldGroup from '../../common/TextAreaFieldGroup.js'
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addEducation } from '../../actions/profileActions'
+import { addEducation } from '../../actions/profileActions.js'
 
 class AddEducation extends Component {
   constructor(props) {

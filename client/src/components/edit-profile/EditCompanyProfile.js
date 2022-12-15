@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import TextFieldGroup from '../../common/TextFieldGroup'
-import TextAreaFieldGroup from '../../common/TextAreaFieldGroup'
+import TextFieldGroup from '../../common/TextFieldGroup.js'
+import TextAreaFieldGroup from '../../common/TextAreaFieldGroup.js'
 // import SelectListGroup from '../../common/SelectListGroup'
-import { createProfile, getCurrentProfile } from '../../actions/profileActions'
-import isEmpty from '../../validation/is-empty'
+import {
+  createProfile,
+  getCurrentProfile,
+} from '../../actions/profileActions.js'
+import isEmpty from '../../validation/is-empty.js'
 
 class EditCompanyProfile extends Component {
   constructor(props) {

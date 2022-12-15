@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-import ProfileHeader from '../profile/ProfileHeader'
+import ProfileHeader from '../profile/ProfileHeader.js'
 // import ProfileAbout from '../profile/ProfileAbout'
 // import ProfileCreds from '../profile/ProfileCreds'
 // import ProfileGithub from '../profile/ProfileGithub'
-import { getProfileByHandle } from '../../actions/profileActions'
-import Spinner from '../../common/Spinner'
-import SavedList from '../savedItem/SavedList'
+import { getProfileByHandle } from '../../actions/profileActions.js'
+import Spinner from '../../common/Spinner.js'
+import SavedList from '../savedItem/SavedList.js'
 
 class HomeComponent extends Component {
   componentDidMount() {

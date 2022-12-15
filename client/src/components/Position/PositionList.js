@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import PositionItem from './PositionItem'
+import PositionItem from './PositionItem.js'
 
-import { findPositionsThunk } from './Position-thunks'
+import { findPositionsThunk } from './Position-thunks.js'
 
 const PositionList = () => {
   const { positions } = useSelector((state) => state.positions)

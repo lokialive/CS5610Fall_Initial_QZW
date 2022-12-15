@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-import ProfileHeader from './ProfileHeader'
-import ProfileAbout from './ProfileAbout'
-import ProfileCreds from './ProfileCreds'
-import ProfileGithub from './ProfileGithub'
-import { getProfileByHandle } from '../../actions/profileActions'
-import Spinner from '../../common/Spinner'
+import ProfileHeader from './ProfileHeader.js'
+import ProfileAbout from './ProfileAbout.js'
+import ProfileCreds from './ProfileCreds.js'
+import ProfileGithub from './ProfileGithub.js'
+import { getProfileByHandle } from '../../actions/profileActions.js'
+import Spinner from '../../common/Spinner.js'
 
 class Profile extends Component {
   componentDidMount() {

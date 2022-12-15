@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import TextFieldGroup from '../../common/TextFieldGroup'
-import TextAreaFieldGroup from '../../common/TextAreaFieldGroup'
+import TextFieldGroup from '../../common/TextFieldGroup.js'
+import TextAreaFieldGroup from '../../common/TextAreaFieldGroup.js'
 
-import { createProfile } from '../../actions/profileActions'
+import { createProfile } from '../../actions/profileActions.js'
 class CreateCompanyProfile extends Component {
   constructor(props) {
     super(props)

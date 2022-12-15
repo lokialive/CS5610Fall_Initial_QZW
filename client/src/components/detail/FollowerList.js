@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import FollowerItem from './FollowerItem'
+import FollowerItem from './FollowerItem.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { findFollowersThunk } from '../follower/Follower-thunk'
+import { findFollowersThunk } from '../follower/Follower-thunk.js'
 // import { getFollowers } from './follower-thunks'
 
 const FollowerList = () => {

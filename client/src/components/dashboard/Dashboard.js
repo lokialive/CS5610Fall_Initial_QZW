@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-import { getCurrentProfile, deleteAccout } from '../../actions/profileActions'
-import Spinner from '../../common/Spinner'
-import ProfileActives from './ProfileActives'
-import Experience from './Experience'
-import Education from './Education'
-import CompanyProfileActives from './CompanyProfileActives'
-import Work from './Work'
+import {
+  getCurrentProfile,
+  deleteAccout,
+} from '../../actions/profileActions.js'
+import Spinner from '../../common/Spinner.js'
+import ProfileActives from './ProfileActives.js'
+import Experience from './Experience.js'
+import Education from './Education.js'
+import CompanyProfileActives from './CompanyProfileActives.js'
+import Work from './Work.js'
 // import PostSummary from './PostSummary'
 class Dashboard extends Component {
   componentDidMount() {

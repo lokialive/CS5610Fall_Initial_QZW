@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-import isEmpty from '../../validation/is-empty'
+import isEmpty from '../../validation/is-empty.js'
 import { connect } from 'react-redux'
-import { deleteAccout } from '../../actions/profileActions'
+import { deleteAccout } from '../../actions/profileActions.js'
 class ProfileItem extends Component {
   onDeleteClick(user_id) {
     this.props.deleteAccout(user_id, this.props.history)

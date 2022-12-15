@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import { deleteExperience } from '../../actions/profileActions'
+import { deleteExperience } from '../../actions/profileActions.js'
 
 class Experience extends Component {
   onDeleteClick(id) {

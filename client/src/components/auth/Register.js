@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { registerUser } from '../../actions/authActions'
+import { registerUser } from '../../actions/authActions.js'
 import { PropTypes } from 'prop-types'
-import TextFieldGroup from '../../common/TextFieldGroup'
+import TextFieldGroup from '../../common/TextFieldGroup.js'
 
 class Register extends Component {
   constructor() {

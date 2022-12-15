@@ -6,7 +6,7 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   // SET_CURRENT_USER,
-} from './types'
+} from './types.js'
 
 //Get Current User Profile Action
 export const getCurrentProfile = () => (dispatch) => {

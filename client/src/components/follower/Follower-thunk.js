@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import * as service from './Follower-service'
+import * as service from './Follower-service.js'
 
 export const findFollowersThunk = createAsyncThunk(
   'followerss/findFollowers',
