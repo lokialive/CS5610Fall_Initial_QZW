@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PositionList from '../Position/PositionList'
 import './company.css'
+import { MapStateToProps } from 'react-redux'
+import axios from 'axios'
 import background from '../../img/linkedin.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { fetchCompanyThunk } from '../search/search-thunks.js'
 import FollowerList from './FollowerList'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { set } from 'koa2/lib/response'
+import { followCompanyThunk } from '../search/search-thunks.js'
 
 const CompanyComponent = () => {
   const { company, loading } = useSelector((state) => state.company)
@@ -13,8 +19,41 @@ const CompanyComponent = () => {
   const paths = pathname.split('/')
   const dispatch = useDispatch()
 
-  const { auth } = useSelector((state) => state.auth)
-  // const { profile } = useSelector((state) => state.profile)
+  const [user, setUser] = useState()
+
+  let profile = {}
+  const getCurrent = async () => {
+    axios.get(`/api/users/current`).then((res) => {
+      let data = JSON.stringify(res.data.id)
+      setUser(data)
+      console.log(user)
+    })
+  }
+
+  const handleClick = () => {
+    console.log(user)
+    let { profile } = axios
+      .get(`/api/profile/user/${user.id}`)
+      .then((res) => console.log(res.data))
+    // dispatch(
+    //   followCompanyThunk(
+    //     company.orb_num,
+    //     company.name,
+    //     user.id,
+    //     profile.handle,
+    //   ),
+    // )
+  }
+
+  // axios.get(`/api/profile/user/${user.id}`).then((res) => {
+  //   profile = res.data
+  //   console.log(profile)
+  // })
+
+  useEffect(() => {
+    getCurrent()
+  }, [])
+
   useEffect(() => {
     dispatch(fetchCompanyThunk(paths[2]))
   }, [])
@@ -34,7 +73,7 @@ const CompanyComponent = () => {
       Follow
     </button>
   )
-  if (!auth) {
+  if (!user) {
     followButton = (
       <button
         className="btn btn-success rounded-pill float-end pt-2"
@@ -46,8 +85,20 @@ const CompanyComponent = () => {
         Follow
       </button>
     )
-  } else if (auth.user.type === 'Employer') {
+  } else if (user.type === 'Employer') {
     followButton = null
+  } else {
+    followButton = (
+      <button
+        className="btn btn-success rounded-pill float-end pt-2"
+        style={{ marginRight: '10px' }}
+        onClick={() => {
+          handleClick()
+        }}
+      >
+        Follow
+      </button>
+    )
   }
 
   return (
@@ -69,16 +120,12 @@ const CompanyComponent = () => {
           />
         </div>
 
-
         <div className="fw-bolder  pb-2 h2 row">
-          <div className="col-10">
-            {company.name}
-          </div>
+          <div className="col-10">{company.name}</div>
           <div className="col-2">
             {/* add follow click */}
             {followButton}
           </div>
-
         </div>
 
         <div className="text-secondary  pe-1 pt-1 pb-2  wd-text-post-small">
@@ -130,4 +177,10 @@ const CompanyComponent = () => {
     </div>
   )
 }
-export default CompanyComponent
+
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  auth: state.auth,
+})
+
+export default connect(mapStateToProps)(CompanyComponent)
