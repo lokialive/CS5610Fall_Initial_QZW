@@ -1,69 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import PositionList from '../Position/PositionList'
 import './company.css'
-import { MapStateToProps } from 'react-redux'
-import axios from 'axios'
 import background from '../../img/linkedin.png'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { fetchCompanyThunk } from '../search/search-thunks.js'
 import FollowerList from './FollowerList'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { set } from 'koa2/lib/response'
 import { followCompanyThunk } from '../search/search-thunks.js'
-
+import { getCurrentProfile } from '../../actions/profileActions'
+import { fetchFollowerListThunk } from '../search/search-thunks.js'
 const CompanyComponent = () => {
   const { company, loading } = useSelector((state) => state.company)
+  const { user } = useSelector((state) => state.auth)
+  const { profile } = useSelector((state) => state.profile)
   const { pathname } = useLocation()
   const paths = pathname.split('/')
   const dispatch = useDispatch()
 
-  const [user, setUser] = useState()
-
-  let profile = {}
-  const getCurrent = async () => {
-    axios.get(`/api/users/current`).then((res) => {
-      let data = JSON.stringify(res.data.id)
-      setUser(data)
-      console.log(user)
-    })
-  }
-
+  let companyId = company.orb_num
+  console.log(companyId)
   const handleClick = () => {
-    console.log(user)
-    let { profile } = axios
-      .get(`/api/profile/user/${user.id}`)
-      .then((res) => console.log(res.data))
-    // dispatch(
-    //   followCompanyThunk(
-    //     company.orb_num,
-    //     company.name,
-    //     user.id,
-    //     profile.handle,
-    //   ),
-    // )
-  }
+    let data =
+      company.orb_num +
+      '-' +
+      company.name.split('.')[0] +
+      '-' +
+      user.id +
+      '-' +
+      profile.handle
 
-  // axios.get(`/api/profile/user/${user.id}`).then((res) => {
-  //   profile = res.data
-  //   console.log(profile)
-  // })
+    dispatch(followCompanyThunk(data))
+  }
 
   useEffect(() => {
-    getCurrent()
+    dispatch(getCurrentProfile())
   }, [])
-
   useEffect(() => {
     dispatch(fetchCompanyThunk(paths[2]))
   }, [])
-  // let id = company.orb_num
-  // let companyName = company.name
-  // let userId = auth._id
-  // let userHandle = profile.handle
-  //need to add
-  //click then call company-thunk里面follow company
-  //传入参数(id, companyName, userId, userHandle)
+
+  // useEffect(() => {
+  //   let id = company.orb_num
+  //   console.log(id)
+  //   dispatch(fetchFollowerListThunk(id))
+  // }, [company.orb_num])
 
   let followButton = (
     <button
@@ -173,7 +154,7 @@ const CompanyComponent = () => {
 
       <PositionList />
       <div className="fw-bolder pt-3 pe-5">Followers</div>
-      <FollowerList companyId={company.orb_num} />
+      <FollowerList />
     </div>
   )
 }

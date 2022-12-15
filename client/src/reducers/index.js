@@ -3,8 +3,9 @@ import authReducer from './authReducer'
 import errorReducer from './errorReducer'
 import profileReducer from './profileReducer'
 import postReducer from './postReducer'
-import companyReducer from "./companyReducer.js";
-import companiesReducer from "./companiesReducer.js";
+import companyReducer from './companyReducer.js'
+import companiesReducer from './companiesReducer.js'
+import followerReducer from './followerReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile: profileReducer,
   post: postReducer,
   companies: companiesReducer,
-  company: companyReducer
+  company: companyReducer,
+  followers: followerReducer,
 })

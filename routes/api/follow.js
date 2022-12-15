@@ -1,12 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
-const passport = require('passport')
 
 const CompanyFollowerList = require('../../models/CompanyFollowerList')
-const User = require('../../models/User')
 
-// $route  GET api/profile/test
+// $route  GET api/follow/test
 // @desc   Return the json file got
 // @access public
 router.get('/test', (req, res) => {
@@ -18,37 +15,33 @@ router.get('/:companyId', (req, res) => {
   const errors = {}
   CompanyFollowerList.findOne({ companyId: req.params.companyId })
     .then((followerList) => {
-      res.json(followerList)
+      res.json(followerList.followers)
     })
     .catch((err) => res.status(404).json(err))
 })
 
-router.post(
-  '/:id/:userId/::userHandle',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    CompanyFollowerList.findOne({ user: req.user.id }).then((list) => {
-      if (list) {
-      } else {
-        //create a new
-        const newCompany = new CompanyFollowerList({
-          companyId: req.params.id,
-          followers: [],
-        })
+router.post('/add/:id/:userId/:userHandle', (req, res) => {
+  CompanyFollowerList.findOne({ companyId: req.params.id }).then((list) => {
+    if (list && list.followers) {
+    } else {
+      //create a new
+      const newList = new CompanyFollowerList({
+        companyId: req.params.id,
+        followers: [],
+      })
 
-        newCompany.save()
-      }
-    })
-    CompanyFollowerList.findOne({ user: req.user.id }).then((list) => {
-      const newFollower = {
-        userId: req.params.userId,
-        userHanlde: req.params.userHanlde,
-      }
-      list.followers.unshift(newFollower)
+      newList.save()
+    }
+  })
+  CompanyFollowerList.findOne({ companyId: req.params.id }).then((list) => {
+    const newFollower = {
+      userId: req.params.userId,
+      userHandle: req.params.userHandle,
+    }
+    list.followers.unshift(newFollower)
 
-      list.save().then((list) => res.json(list))
-    })
-  },
-)
+    list.save().then((list) => res.json(list))
+  })
+})
 
 module.exports = router

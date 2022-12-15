@@ -11,9 +11,14 @@ export const fetchCompanyThunk = createAsyncThunk(
   async (id) => await service.fetchCompanyByID(id),
 )
 
+export const fetchFollowerListThunk = createAsyncThunk(
+  'fetchFollowerList',
+  async (id) => await service.fetchFollowerListById(id),
+)
+
 export const followCompanyThunk = createAsyncThunk(
   'followCompany',
-  async (id, companyName, userId, userHandle) => {
-    await service.followCompany(id, companyName, userId, userHandle)
+  async (data) => {
+    await service.followCompany(data)
   },
 )

@@ -9,8 +9,7 @@ const CompanyFollowerSchema = new Schema({
   followers: [
     {
       userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
+        type: String,
       },
       userHandle: {
         type: String,

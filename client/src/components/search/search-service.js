@@ -21,10 +21,35 @@ export const fetchCompanyByID = async (id) => {
   return company
 }
 
-export const followCompany = async (id, companyName, userId, userHandle) => {
+export const fetchFollowerListById = async (id) => {
+  console.log(id)
+  const response = await axios.get(`http://localhost:8080/api/follow/${id}`)
+  const list = response.data
+  console.log(list)
+  console.log('t')
+
+  return list
+}
+
+export const followCompany = async (data) => {
   //1. add company name and company id to the user profile by userId
-  axios.put(`/api/profile/${userHandle}/${id}/${companyName}`)
-  const response = axios.put(`/api/follow/${id}/${userId}/${userHandle}`)
-  const followerList = response.data.results
-  return followerList
+  let datas = data.split('-')
+
+  let id = datas[0]
+  let companyName = datas[1]
+  let userId = datas[2]
+  let userHandle = datas[3]
+
+  let response = await fetch(
+    `http://localhost:8080/api/profile/follow/${userId}/${id}/${companyName}`,
+    {
+      method: 'POST',
+    },
+  )
+  let res = await fetch(
+    `http://localhost:8080/api/follow/add/${id}/${userId}/${userHandle}`,
+    {
+      method: 'POST',
+    },
+  )
 }
